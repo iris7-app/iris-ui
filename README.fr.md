@@ -1,4 +1,4 @@
-![Mirador UI](public/banner.svg)
+![Iris UI](public/banner.svg)
 
 <sub>[English](README.md) · **Français**</sub>
 
@@ -7,7 +7,12 @@
 [![CodeQL](https://github.com/mirador1/mirador-ui/actions/workflows/codeql.yml/badge.svg)](https://github.com/mirador1/mirador-ui/actions/workflows/codeql.yml)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/mirador1/mirador-ui/badge)](https://scorecard.dev/viewer/?uri=github.com/mirador1/mirador-ui)
 
-# Mirador UI — le siège au premier rang
+# Iris UI — vitrine observability-first sur 7 facettes (frontend)
+
+> Aucun point de vue ne raconte tout — chaque facette révèle une partie
+> du système. Comme un diaphragme, l'image complète émerge de la
+> composition. Voir [README.md](README.md) (anglais) pour le détail
+> exhaustif des 7 axes.
 
 > **Observer. Comprendre. Agir.**
 >
