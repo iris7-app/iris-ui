@@ -35,7 +35,7 @@ export interface TourStep {
   readonly position?: 'top' | 'bottom' | 'left' | 'right';
 }
 
-const STORAGE_KEY = 'mirador:tour:seen';
+const STORAGE_KEY = 'iris:tour:seen';
 
 /**
  * Steps in the canonical order. Changes land here — the overlay component
@@ -45,7 +45,7 @@ const STORAGE_KEY = 'mirador:tour:seen';
 const DEFAULT_STEPS: readonly TourStep[] = [
   {
     targetSelector: null,
-    title: 'Welcome to Mirador 👋',
+    title: 'Welcome to Iris 👋',
     body:
       'This is a 5-step tour of the main features. Use ← → or the buttons to navigate,' +
       ' Esc to skip. You can replay this tour any time from the 🎓 button in the top bar.',

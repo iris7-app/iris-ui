@@ -1,6 +1,6 @@
 # Architecture
 
-High-level view of the Mirador UI, the backend services it talks to, and the shared observability stack.
+High-level view of the Iris UI, the backend services it talks to, and the shared observability stack.
 
 ## Diagram
 

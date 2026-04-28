@@ -360,7 +360,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       port: '3001',
       url: 'http://localhost:3000/dashboards',
     },
-    // pgweb + pgAdmin retired together in mirador-service MR 77. CloudBeaver
+    // pgweb + pgAdmin retired together in iris-service MR 77. CloudBeaver
     // replaces both — one SQL client, same DBeaver UI as the desktop app.
     cloudbeaver: {
       icon: '🐘',
@@ -382,7 +382,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       port: '9080',
       url: 'http://localhost:9080',
     },
-    // Redis Commander removed with mirador-service MR 77 — RedisInsight is
+    // Redis Commander removed with iris-service MR 77 — RedisInsight is
     // the single Redis UI now.
     redisinsight: {
       icon: '🔎',
@@ -415,7 +415,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
       label: 'Compodoc (UI)',
       description: 'Angular API docs (static)',
       detail:
-        'Nginx serving Compodoc-generated documentation for the Angular frontend — components, services, interfaces, routes with JSDoc comments. The frontend equivalent of Javadoc. Generate: `cd mirador-ui && npm run compodoc`.',
+        'Nginx serving Compodoc-generated documentation for the Angular frontend — components, services, interfaces, routes with JSDoc comments. The frontend equivalent of Javadoc. Generate: `cd iris-ui && npm run compodoc`.',
       ...SVC.compodoc,
     },
   };

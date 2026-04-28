@@ -32,7 +32,7 @@ import { test, expect } from '@playwright/test';
 
 // Tolerance per test: 0.2% of pixels differing is the quietest signal
 // that still catches a real layout break; tightening further would
-// flag anti-aliasing on the Mirador SVG logo between CI and local.
+// flag anti-aliasing on the Iris SVG logo between CI and local.
 test.describe('Visual regression @visual', () => {
   test('login page layout', async ({ page }) => {
     await page.goto('/login');

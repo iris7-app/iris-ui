@@ -2,10 +2,10 @@
 
 <sub>[English](README.md) · **Français**</sub>
 
-[![pipeline](https://gitlab.com/mirador1/mirador-ui/badges/main/pipeline.svg)](https://gitlab.com/mirador1/mirador-ui/-/pipelines)
-[![latest release](https://gitlab.com/mirador1/mirador-ui/-/badges/release.svg)](https://gitlab.com/mirador1/mirador-ui/-/releases)
-[![CodeQL](https://github.com/mirador1/mirador-ui/actions/workflows/codeql.yml/badge.svg)](https://github.com/mirador1/mirador-ui/actions/workflows/codeql.yml)
-[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/mirador1/mirador-ui/badge)](https://scorecard.dev/viewer/?uri=github.com/mirador1/mirador-ui)
+[![pipeline](https://gitlab.com/iris-7/iris-ui/badges/main/pipeline.svg)](https://gitlab.com/iris-7/iris-ui/-/pipelines)
+[![latest release](https://gitlab.com/iris-7/iris-ui/-/badges/release.svg)](https://gitlab.com/iris-7/iris-ui/-/releases)
+[![CodeQL](https://github.com/iris-7/iris-ui/actions/workflows/codeql.yml/badge.svg)](https://github.com/iris-7/iris-ui/actions/workflows/codeql.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/iris-7/iris-ui/badge)](https://scorecard.dev/viewer/?uri=github.com/iris-7/iris-ui)
 
 # Iris UI — vitrine observability-first sur 7 facettes (frontend)
 
@@ -18,11 +18,11 @@
 >
 > _Construit avec les bons outils et les bonnes méthodes._
 
-![Démo Mirador UI — login, CRUD client, dashboard](docs/media/demo.gif)
+![Démo Iris UI — login, CRUD client, dashboard](docs/media/demo.gif)
 
 <sub>Régénération : `bin/record-demo.sh` (nécessite ffmpeg + la stack locale allumée).</sub>
 
-**Mirador** — *watchtower* en espagnol — c'est exactement ce qu'est
+**Iris** — *watchtower* en espagnol — c'est exactement ce qu'est
 ce projet : un point d'observation d'un système réel qui tourne,
 qui te permet d'observer en un seul endroit **le code, les métriques
 runtime, les pipelines CI/CD, et l'outillage industriel** câblé
@@ -43,7 +43,7 @@ Chaque commit porte un trailer `Co-Authored-By:` qui nomme le modèle
 exact — le log git sert de piste d'audit.
 
 Ce repo est le **frontend Angular 21**. Le backend Spring Boot 4
-vit à [`mirador-service`](https://gitlab.com/mirador1/mirador-service).
+vit à [`iris-service`](https://gitlab.com/iris-7/iris-service).
 
 ## Ce que l'UI expose
 
@@ -94,11 +94,11 @@ L'UI consomme le backend et l'affiche sous plusieurs angles :
 > sur GitHub ne seront pas revues.
 
 Pour contribuer :
-[gitlab.com/mirador1/mirador-ui](https://gitlab.com/mirador1/mirador-ui)
+[gitlab.com/iris-7/iris-ui](https://gitlab.com/iris-7/iris-ui)
 
 Détails du split master/slave dans
-[`docs/ops/ci-philosophy.md`](https://gitlab.com/mirador1/mirador-service/-/blob/main/docs/ops/ci-philosophy.md)
-(côté mirador-service).
+[`docs/ops/ci-philosophy.md`](https://gitlab.com/iris-7/iris-service/-/blob/main/docs/ops/ci-philosophy.md)
+(côté iris-service).
 
 ## Documentation
 
@@ -118,6 +118,6 @@ chemins de fichiers sont identiques dans les deux versions.
 
 ---
 
-<sub>_Mirador_ — espagnol pour _mirador_ — se tient au premier rang
+<sub>_Iris_ — espagnol pour _iris_ — se tient au premier rang
 d'un système qui tourne et répond à : "que montre le code à
 l'utilisateur là, tout de suite ?"</sub>

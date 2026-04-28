@@ -19,9 +19,9 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
       <h2 class="section-title">🚀 Pipeline History</h2>
       <div class="external-link-card">
         <p>
-          Pipeline history is served by GitLab's own CI/CD page — Mirador no longer proxies it (see
+          Pipeline history is served by GitLab's own CI/CD page — Iris no longer proxies it (see
           <a
-            href="https://gitlab.com/mirador1/mirador-service/-/blob/main/docs/adr/0052-backend-not-coupled-to-build-tools.md"
+            href="https://gitlab.com/iris-7/iris-service/-/blob/main/docs/adr/0052-backend-not-coupled-to-build-tools.md"
             target="_blank"
             rel="noopener"
             >ADR-0052</a
@@ -29,7 +29,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
         </p>
         <a
           class="btn-sonar"
-          href="https://gitlab.com/mirador1/mirador-service/-/pipelines"
+          href="https://gitlab.com/iris-7/iris-service/-/pipelines"
           target="_blank"
           rel="noopener"
         >

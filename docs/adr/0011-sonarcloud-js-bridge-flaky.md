@@ -2,7 +2,7 @@
 
 - **Status**: Accepted
 - **Date**: 2026-04-25
-- **Deciders**: Mirador maintainers
+- **Deciders**: Iris maintainers
 - **Related**: `~/.claude/CLAUDE.md` -> "Surgical fixes, not allow_failure
   bypasses" + "Pipelines stay green"; the
   [SonarSource JS plugin issue tracker](https://community.sonarsource.com/c/bug-reports/javascript-typescript/) ;
@@ -11,7 +11,7 @@
 
 ## Context
 
-The `sonarcloud` CI job analyses the Mirador UI codebase against
+The `sonarcloud` CI job analyses the Iris UI codebase against
 SonarCloud. It runs the SonarSource JavaScript / TypeScript plugin
 (`v12.3.0.39932` as of the 2026-04-25 trace) which spawns a Node
 subprocess called the "JS bridge" and communicates with it over a
@@ -19,7 +19,7 @@ WebSocket. The bridge runs all JS / TS rule evaluations, then reports
 results back to the Java scanner.
 
 After the wave 1-10 chase to fix the tree-sitter directory permissions
-(see [build/sonar-scanner.Dockerfile](file:///Users/benoitbesson/dev/js/mirador-ui/build/sonar-scanner.Dockerfile)),
+(see [build/sonar-scanner.Dockerfile](file:///Users/benoitbesson/dev/js/iris-ui/build/sonar-scanner.Dockerfile)),
 the original symptom
 
     java.lang.RuntimeException: Failed to create directory:
@@ -33,7 +33,7 @@ runs JS analysis for ~9 minutes, then crashes:
       abnormally:
 
 with no further detail. Pipeline
-[#2479217597](https://gitlab.com/mirador1/mirador-ui/-/pipelines/2479217597)
+[#2479217597](https://gitlab.com/iris-7/iris-ui/-/pipelines/2479217597)
 sonarcloud job 14088151211 trace shows the bridge ran from 11:11:57
 to 11:20:35 (~9 min into JS analysis) before the WebSocket dropped.
 Total job runtime: 14 min 24 s.
@@ -148,8 +148,8 @@ account-level changes.
 ## References
 
 - The custom image Dockerfile + waves 1-11 history:
-  [`build/sonar-scanner.Dockerfile`](file:///Users/benoitbesson/dev/js/mirador-ui/build/sonar-scanner.Dockerfile)
+  [`build/sonar-scanner.Dockerfile`](file:///Users/benoitbesson/dev/js/iris-ui/build/sonar-scanner.Dockerfile)
 - Pipeline showing the post-image-fix WebSocket close:
-  [#2479217597](https://gitlab.com/mirador1/mirador-ui/-/pipelines/2479217597)
+  [#2479217597](https://gitlab.com/iris-7/iris-ui/-/pipelines/2479217597)
 - CLAUDE.md rule on surgical fixes:
   `~/.claude/CLAUDE.md` -> "Surgical fixes, not allow_failure bypasses"

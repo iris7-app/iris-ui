@@ -108,8 +108,8 @@ const server = createServer((req, res) => {
 
   // GitLab REST API proxy — injects PRIVATE-TOKEN so the browser never
   // sees it. Any path after /gitlab/ is forwarded verbatim to
-  // gitlab.com/api/v4/. Example: GET /gitlab/projects/mirador1%2Fmirador-ui/pipelines
-  // hits https://gitlab.com/api/v4/projects/mirador1%2Fmirador-ui/pipelines.
+  // gitlab.com/api/v4/. Example: GET /gitlab/projects/iris-7%2Firis-ui/pipelines
+  // hits https://gitlab.com/api/v4/projects/iris-7%2Firis-ui/pipelines.
   if (url.pathname.startsWith('/gitlab/')) {
     return gitlabProxy(req, res);
   }
@@ -129,7 +129,7 @@ function gitlabProxy(req, res) {
   const targetPath = '/api/v4' + req.url.replace(/^\/gitlab/, '');
   const headers = {
     Accept: 'application/json',
-    'User-Agent': 'mirador-ui-docker-api/1.0',
+    'User-Agent': 'iris-ui-docker-api/1.0',
   };
   if (process.env.GITLAB_API_TOKEN) {
     headers['PRIVATE-TOKEN'] = process.env.GITLAB_API_TOKEN;

@@ -2,7 +2,7 @@
 /* eslint-env node */
 
 // =============================================================================
-// ESLint 9 flat config for Mirador UI.
+// ESLint 9 flat config for Iris UI.
 //
 // Goal: surface Angular-specific bugs the TypeScript compiler and SonarCloud
 // don't catch reliably — most importantly RxJS subscribe-leak patterns

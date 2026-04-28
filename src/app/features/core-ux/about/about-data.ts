@@ -444,7 +444,7 @@ export const PORT_MAP: PortMapEntry[] = [
     category: 'App',
     note: 'Dev server → API on :8080 (not kind). Use :8090 for the kind cluster.',
   },
-  // Kubernetes access: ADR-0025 in mirador-service dropped the kind
+  // Kubernetes access: ADR-0025 in iris-service dropped the kind
   // ingress entirely — kind and GKE are now reached through kubectl
   // port-forward (bin/pf-prod.sh), same tunnel port map for both.
   {
@@ -479,7 +479,7 @@ export const PORT_MAP: PortMapEntry[] = [
   },
   // Admin Tools. pgAdmin + pgweb + Redis Commander were dropped in
   // favour of CloudBeaver (one SQL client instead of two) + RedisInsight
-  // (one Redis UI instead of two). See mirador-service MR 77.
+  // (one Redis UI instead of two). See iris-service MR 77.
   {
     port: 8978,
     name: 'CloudBeaver',

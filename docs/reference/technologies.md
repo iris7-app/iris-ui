@@ -1,8 +1,8 @@
-# Technology glossary — mirador-ui
+# Technology glossary — iris-ui
 
 This is an exhaustive, browse-friendly reference listing every non-trivial piece of
 technology this repo touches. Companion file: the backend glossary at
-[mirador-service/docs/technologies.md](https://gitlab.com/mirador1/mirador-service/-/blob/main/docs/technologies.md).
+[iris-service/docs/technologies.md](https://gitlab.com/iris-7/iris-service/-/blob/main/docs/technologies.md).
 
 Each entry follows the same three-line format:
 
@@ -411,7 +411,7 @@ Vitest, standalone components), see [`docs/adr/`](../adr/).
 
 ### 🔐 [`@auth0/auth0-angular` 2.8](https://github.com/auth0/auth0-angular)
 - **What it is** — Auth0's official Angular SDK (OIDC + PKCE + token caching).
-- **Usage here** — `provideAuth0()` in `src/app/app.config.ts` with domain `dev-ksxj46zlkhk2gcvo.us.auth0.com` and audience `https://mirador-api`; bridge in `src/app/core/auth/auth0-bridge.service.ts`.
+- **Usage here** — `provideAuth0()` in `src/app/app.config.ts` with domain `dev-ksxj46zlkhk2gcvo.us.auth0.com` and audience `https://iris-api`; bridge in `src/app/core/auth/auth0-bridge.service.ts`.
 - **Why it's pertinent** — offloads OIDC, PKCE, and token refresh to a managed provider; avoids shipping auth libraries we'd have to maintain.
 
 ### 🔐 [Auth0](https://auth0.com/)
@@ -685,7 +685,7 @@ Vitest, standalone components), see [`docs/adr/`](../adr/).
 
 ### 🟩 [Static file root (`/usr/share/nginx/html`)](https://hub.docker.com/_/nginx)
 - **What it is** — Nginx's conventional webroot.
-- **Usage here** — `COPY --from=builder /app/dist/mirador-ui/browser /usr/share/nginx/html`.
+- **Usage here** — `COPY --from=builder /app/dist/iris-ui/browser /usr/share/nginx/html`.
 - **Why it's pertinent** — aligns with the base image defaults, minimising config surface.
 
 ---
@@ -966,7 +966,7 @@ Vitest, standalone components), see [`docs/adr/`](../adr/).
 
 ### 🚀 [`bin/ship/changelog.sh`](../../bin/ship/changelog.sh) + [`gitlab-release.sh`](../../bin/ship/gitlab-release.sh)
 - **What it is** — two local shell scripts (~200 LOC total) that generate CHANGELOG entries from Conventional Commits and promote a `stable-v*` tag to a GitLab Release.
-- **Usage here** — run manually after a tag push : `bin/ship/changelog.sh` prepends the new entry, commit + tag, `bin/ship/gitlab-release.sh <tag>` creates the Release via `glab`. Shared workflow with the svc repo — see [`mirador-service/docs/how-to/changelog-workflow.md`](https://gitlab.com/mirador1/mirador-service/-/blob/main/docs/how-to/changelog-workflow.md).
+- **Usage here** — run manually after a tag push : `bin/ship/changelog.sh` prepends the new entry, commit + tag, `bin/ship/gitlab-release.sh <tag>` creates the Release via `glab`. Shared workflow with the svc repo — see [`iris-service/docs/how-to/changelog-workflow.md`](https://gitlab.com/iris-7/iris-service/-/blob/main/docs/how-to/changelog-workflow.md).
 - **Why it's pertinent** — replaced `googleapis/release-please` 2026-04-23 (that tool is GitHub-API-only, 401 Bad Credentials on GitLab PAT). Shell version adds zero node_modules to an Angular repo's supply chain and burns zero CI runner time (local-only execution).
 
 ---
@@ -1133,7 +1133,7 @@ Vitest, standalone components), see [`docs/adr/`](../adr/).
 
 ## Cross-reference
 
-- Backend glossary (Spring Boot, Postgres, Kafka, Redis, Ollama, Keycloak, Prometheus, Grafana, Tempo, Loki, Pyroscope, etc.): [mirador-service/docs/technologies.md](https://gitlab.com/mirador1/mirador-service/-/blob/main/docs/technologies.md)
+- Backend glossary (Spring Boot, Postgres, Kafka, Redis, Ollama, Keycloak, Prometheus, Grafana, Tempo, Loki, Pyroscope, etc.): [iris-service/docs/technologies.md](https://gitlab.com/iris-7/iris-service/-/blob/main/docs/technologies.md)
 - Architecture overview: [`docs/reference/architecture.md`](architecture.md)
 - CI/CD details: [`docs/ops/ci-cd.md`](../ops/ci-cd.md)
 - Environments: [`docs/getting-started/environment.md`](../getting-started/environment.md)

@@ -1,5 +1,5 @@
 # =============================================================================
-# Custom SonarScanner CLI image for Mirador UI's CI sonarcloud job.
+# Custom SonarScanner CLI image for Iris UI's CI sonarcloud job.
 #
 # WHY this exists (waves 1-10 history, 2026-04-23 → 2026-04-25):
 #
@@ -59,7 +59,7 @@
 #
 #   docker buildx build --platform linux/amd64 \
 #     -f build/sonar-scanner.Dockerfile \
-#     -t registry.gitlab.com/mirador1/mirador-ui/sonar-scanner:11.5.0.2154 \
+#     -t registry.gitlab.com/iris-7/iris-ui/sonar-scanner:11.5.0.2154 \
 #     --push .
 #
 #   The CI job `sonar-scanner:image` automates this — runs only when
@@ -104,9 +104,9 @@ USER scanner-cli
 
 # OCI labels — traceability for cosign / Trivy / GitLab registry UI.
 # These mirror the labels on build/Dockerfile (the SPA image).
-LABEL org.opencontainers.image.title="mirador-ui-sonar-scanner" \
-      org.opencontainers.image.description="Mirador UI custom SonarScanner CLI image with writable /home/scanner-cli for the JS/TS bridge tree-sitter cache" \
-      org.opencontainers.image.source="https://gitlab.com/mirador1/mirador-ui" \
+LABEL org.opencontainers.image.title="iris-ui-sonar-scanner" \
+      org.opencontainers.image.description="Iris UI custom SonarScanner CLI image with writable /home/scanner-cli for the JS/TS bridge tree-sitter cache" \
+      org.opencontainers.image.source="https://gitlab.com/iris-7/iris-ui" \
       org.opencontainers.image.licenses="Proprietary" \
-      org.opencontainers.image.vendor="mirador1" \
+      org.opencontainers.image.vendor="iris-7" \
       org.opencontainers.image.base.name="sonarsource/sonar-scanner-cli:11.5.0.2154_7.3.0"

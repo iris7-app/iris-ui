@@ -73,7 +73,7 @@ export class CustomersComponent implements OnInit, OnDestroy {
   readonly auth = inject(AuthService);
   private readonly toast = inject(ToastService);
   private readonly activity = inject(ActivityService);
-  /** Feature flags — used to gate the Bio tab on `mirador.bio.enabled`. */
+  /** Feature flags — used to gate the Bio tab on `iris.bio.enabled`. */
   readonly flags = inject(FeatureFlagService);
 
   /**
@@ -84,14 +84,14 @@ export class CustomersComponent implements OnInit, OnDestroy {
   /**
    * Is the Bio tab available? Kill-switch semantics via Unleash:
    *   - Local (no proxy) → true (always show in dev)
-   *   - Kind/Prod with flag `mirador.bio.enabled = false` → hide the tab
+   *   - Kind/Prod with flag `iris.bio.enabled = false` → hide the tab
    *   - Kind/Prod, flag missing or loading → true (default on: Ollama is
    *     part of the customer-facing product so we stay optimistic)
    */
   readonly bioEnabled = computed(() => {
     if (!this.flags.isAvailable()) return true;
     const map = this.flags.flags();
-    return 'mirador.bio.enabled' in map ? map['mirador.bio.enabled'] : true;
+    return 'iris.bio.enabled' in map ? map['iris.bio.enabled'] : true;
   });
 
   // ── List + pagination + sort + search state — delegated to

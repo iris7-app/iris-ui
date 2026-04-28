@@ -10,7 +10,7 @@ at `/favicon.svg` in the deployed app.
 
 | Entry            | Role                                                                                                       |
 | ---------------- | ---------------------------------------------------------------------------------------------------------- |
-| `banner.svg`     | Mirador banner, referenced in the root `README.md` and embedded in the app's home screen.                  |
+| `banner.svg`     | Iris banner, referenced in the root `README.md` and embedded in the app's home screen.                  |
 | `favicon.svg`    | Browser tab icon.                                                                                          |
 | `icon-white.svg` | Monochrome variant used in the dark-mode header.                                                           |
 | `manifest.json`  | PWA manifest (app name, icons, theme color) — enables "Add to Home Screen" on mobile.                      |

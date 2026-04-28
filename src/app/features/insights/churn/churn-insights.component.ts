@@ -59,7 +59,7 @@ interface RankedPrediction {
           <strong>ONNX</strong> model trained in Python and served in-process by both backends (Java
           + Python — see
           <a
-            href="https://gitlab.com/mirador1/mirador-service-shared/-/blob/main/docs/adr/0061-customer-churn-prediction.md"
+            href="https://gitlab.com/iris-7/iris-service-shared/-/blob/main/docs/adr/0061-customer-churn-prediction.md"
             target="_blank"
             rel="noopener"
           >

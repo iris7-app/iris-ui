@@ -11,7 +11,7 @@
  * input", and any future URI-scheme tweaks as the target apps evolve.
  *
  * Target apps + their URI templates are documented in
- * <https://gitlab.com/mirador1/mirador-service/-/blob/main/docs/getting-started/dev-tooling.md>.
+ * <https://gitlab.com/iris-7/iris-service/-/blob/main/docs/getting-started/dev-tooling.md>.
  */
 import { Injectable } from '@angular/core';
 

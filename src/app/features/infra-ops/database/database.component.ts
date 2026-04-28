@@ -82,7 +82,7 @@ export class DatabaseComponent {
    * Calls pgweb REST API — read-only SQL proxy. The endpoint is env-aware:
    *   Local       → http://localhost:8081  (pgweb-local → compose `db:5432`)
    *   Prod tunnel → http://localhost:8082  (pgweb-prod  → host.docker.internal:15432)
-   * Per ADR-0026 in mirador-service, Spring Boot is not on this path.
+   * Per ADR-0026 in iris-service, Spring Boot is not on this path.
    */
   executeSql(): void {
     const pgweb = this.env.pgwebUrl();

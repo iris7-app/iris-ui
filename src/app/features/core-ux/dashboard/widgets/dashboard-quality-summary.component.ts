@@ -128,7 +128,7 @@ import type { QualitySummary } from '../dashboard-types';
               >
             } @else {
               <a
-                href="https://sonarcloud.io/project/overview?id=mirador1_mirador-service"
+                href="https://sonarcloud.io/project/overview?id=iris-7_iris-service"
                 target="_blank"
                 rel="noopener"
                 class="quality-sonar-link"

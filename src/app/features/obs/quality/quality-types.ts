@@ -421,7 +421,7 @@ export interface QualityReport {
   /**
    * @deprecated Removed 2026-04-22 per ADR-0052 — the backend no longer
    * calls the GitLab REST API. Dashboard's Pipeline tab links to
-   * gitlab.com/mirador1/mirador-service/-/pipelines directly. Kept on
+   * gitlab.com/iris-7/iris-service/-/pipelines directly. Kept on
    * the interface with an optional type so older cached responses don't
    * fail to parse; new responses never set it.
    */
@@ -489,7 +489,7 @@ export interface PipelineReport {
 export interface SonarReport {
   /** True when a SonarQube instance was reachable and returned data for this project. */
   available: boolean;
-  /** SonarQube project key (e.g., `'mirador'`). */
+  /** SonarQube project key (e.g., `'iris'`). */
   projectKey?: string;
   /** Direct URL to the SonarQube project dashboard (used for "Open ↗" links). */
   url?: string;

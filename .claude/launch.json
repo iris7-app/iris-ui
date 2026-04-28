@@ -12,7 +12,7 @@
       "runtimeExecutable": "sh",
       "runtimeArgs": [
         "-c",
-        "cd ../../workspace-modern/mirador-service && ./mvnw spring-boot:run"
+        "cd ../../workspace-modern/iris-service && ./mvnw spring-boot:run"
       ],
       "port": 8080,
       "autoPort": false

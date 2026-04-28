@@ -2,13 +2,13 @@
 
 Contains the Dockerfile used to package the Angular SPA into an Nginx-based
 OCI image. Isolated from the repo root for parity with the sibling
-`mirador-service/build/` layout — both repos use the same convention.
+`iris-service/build/` layout — both repos use the same convention.
 
 ## Files
 
 | File         | Purpose                                                                                                                            |
 | ------------ | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `Dockerfile` | Multi-stage: Node 22 Alpine builder → Nginx 1.27 Alpine runtime. OCI-labelled. Serves `dist/mirador-ui/browser/` from `/usr/share/nginx/html`. |
+| `Dockerfile` | Multi-stage: Node 22 Alpine builder → Nginx 1.27 Alpine runtime. OCI-labelled. Serves `dist/iris-ui/browser/` from `/usr/share/nginx/html`. |
 
 ## How to build
 
@@ -18,11 +18,11 @@ from the repo root, not from this directory:
 
 ```bash
 # Local build
-docker build -f build/Dockerfile -t mirador-ui:local .
+docker build -f build/Dockerfile -t iris-ui:local .
 
 # With explicit amd64 target (matches GKE nodes)
 docker buildx build -f build/Dockerfile --platform linux/amd64 \
-  -t mirador-ui:local .
+  -t iris-ui:local .
 ```
 
 The CI pipeline (`.gitlab-ci.yml` → `docker-build` job) uses the same

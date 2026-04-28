@@ -43,8 +43,8 @@ export interface GitlabJob {
  * they're safe to paste into the GitLab REST path directly.
  */
 export const PROJECTS = {
-  ui: 'mirador1%2Fmirador-ui',
-  service: 'mirador1%2Fmirador-service',
+  ui: 'iris-7%2Firis-ui',
+  service: 'iris-7%2Firis-service',
 } as const;
 
 export type ProjectKey = keyof typeof PROJECTS;

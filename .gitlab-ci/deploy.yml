@@ -23,7 +23,7 @@
       done
     - kubectl rollout status deployment/customer-ui -n app --timeout=120s
 
-# deploy:gke + smoke-test retired with mirador-service ADR-0025 + ADR-0027:
+# deploy:gke + smoke-test retired with iris-service ADR-0025 + ADR-0027:
 # the UI is no longer deployed to any Kubernetes cluster — it runs on the
 # developer's laptop and reaches the cluster through bin/pf-prod.sh tunnels.
 # The image is still built and scanned (test-image stage above) as a

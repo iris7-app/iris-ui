@@ -41,9 +41,9 @@ export class AuthService {
    *       `role` string claim. Accepts both `ROLE_ADMIN` (Spring prefix style)
    *       and `ADMIN` (plain, legacy).</li>
    *   <li><b>Auth0 JWT</b>: namespaced custom claim
-   *       `https://mirador-api/roles` (array of strings). Injected by the
-   *       "Inject mirador roles" Auth0 Action in the Post-Login flow —
-   *       see {@code docs/api/auth0-action-roles.js} in mirador-service.
+   *       `https://iris-api/roles` (array of strings). Injected by the
+   *       "Inject iris roles" Auth0 Action in the Post-Login flow —
+   *       see {@code docs/api/auth0-action-roles.js} in iris-service.
    *       Namespaced because OIDC reserves top-level claim names.</li>
    *   <li><b>Keycloak JWT</b>: roles are nested under `realm_access.roles`
    *       (array). Same format Spring's JwtAuthenticationFilter reads on
@@ -70,7 +70,7 @@ export class AuthService {
       if (realmAccess && Array.isArray(realmAccess.roles)) {
         roles.push(...realmAccess.roles.filter((r): r is string => typeof r === 'string'));
       }
-      const auth0Roles = payload['https://mirador-api/roles'];
+      const auth0Roles = payload['https://iris-api/roles'];
       if (Array.isArray(auth0Roles)) {
         roles.push(...auth0Roles.filter((r): r is string => typeof r === 'string'));
       }

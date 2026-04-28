@@ -1,7 +1,7 @@
 // =============================================================================
 // k6 smoke test — runs post-deploy to verify the GKE frontend responds OK.
 //
-// Front-end smoke test mirrors the backend one (see mirador-service's
+// Front-end smoke test mirrors the backend one (see iris-service's
 // scripts/load-test/smoke.js). The Angular app and the backend share a
 // single host behind the nginx Ingress; we hit both the SPA shell and a
 // few `/api/*` paths that the ingress rewrites to the backend. Running
@@ -17,7 +17,7 @@
 //   - >99% of checks pass
 //
 // Run locally:
-//   K8S_HOST=mirador1.duckdns.org k6 run scripts/load-test/smoke.js
+//   K8S_HOST=iris7.duckdns.org k6 run scripts/load-test/smoke.js
 //
 // In CI, K8S_HOST is a protected variable set by the deploy:gke
 // environment.
@@ -26,7 +26,7 @@
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 
-const BASE = `https://${__ENV.K8S_HOST || 'mirador1.duckdns.org'}`;
+const BASE = `https://${__ENV.K8S_HOST || 'iris7.duckdns.org'}`;
 
 export const options = {
   scenarios: {

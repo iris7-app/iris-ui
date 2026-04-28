@@ -117,7 +117,7 @@ import { Component, input } from '@angular/core';
         </svg>
       </div>
       <div class="hero-text">
-        <h3>What is Mirador?</h3>
+        <h3>What is Iris?</h3>
         <p>
           A full-stack <strong>observability and management platform</strong> built with Angular 21
           and Spring Boot 4. It demonstrates production-grade patterns for distributed tracing,
@@ -125,15 +125,15 @@ import { Component, input } from '@angular/core';
           resilience — all visible and controllable from the browser.
         </p>
         <p class="hero-tagline">
-          <em>Mirador</em> — Spanish for <em>watchtower</em> or <em>viewpoint</em>. A place to
-          watch, understand, and act.
+          <em>Iris</em> — Spanish for <em>watchtower</em> or <em>viewpoint</em>. A place to watch,
+          understand, and act.
         </p>
         <div class="hero-links">
-          <a href="https://gitlab.com/mirador1" target="_blank" rel="noopener" class="hero-link">
-            🦊 gitlab.com/mirador1
+          <a href="https://gitlab.com/iris-7" target="_blank" rel="noopener" class="hero-link">
+            🦊 gitlab.com/iris-7
           </a>
           <a
-            href="https://mirador1.gitlab.io/mirador-service/"
+            href="https://iris-7.gitlab.io/iris-service/"
             target="_blank"
             rel="noopener"
             class="hero-link"

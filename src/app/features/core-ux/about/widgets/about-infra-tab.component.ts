@@ -88,15 +88,10 @@ import { PORT_MAP, PORT_CATEGORIES, RUN_COMMANDS, QUICK_START } from '../about-d
     <article class="card">
       <h3>External Services</h3>
       <p class="card-desc">
-        Cloud and SaaS services used by Mirador (require an account or subscription).
+        Cloud and SaaS services used by Iris (require an account or subscription).
       </p>
       <div class="ext-services-grid">
-        <a
-          href="https://gitlab.com/mirador1"
-          target="_blank"
-          rel="noopener"
-          class="ext-service-card"
-        >
+        <a href="https://gitlab.com/iris-7" target="_blank" rel="noopener" class="ext-service-card">
           <span class="ext-icon">
             <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true">
               <path
@@ -108,7 +103,7 @@ import { PORT_MAP, PORT_CATEGORIES, RUN_COMMANDS, QUICK_START } from '../about-d
           <span class="ext-desc">Source code, CI/CD pipelines, MR auto-merge</span>
         </a>
         <a
-          href="https://sonarcloud.io/project/overview?id=mirador1_mirador-service"
+          href="https://sonarcloud.io/project/overview?id=iris-7_iris-service"
           target="_blank"
           rel="noopener"
           class="ext-service-card"

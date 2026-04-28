@@ -3,7 +3,7 @@
 - **Status**: Accepted
 - **Date**: 2026-04-19
 - **Refines**: [ADR-0006](0006-grafana-duplication.md), [ADR-0007](0007-retire-prometheus-ui-visualisations.md)
-- **Related (backend)**: mirador-service ADR-0026 (Spring Boot scope limit), ADR-0029 below
+- **Related (backend)**: iris-service ADR-0026 (Spring Boot scope limit), ADR-0029 below
 
 ## Context
 
@@ -33,7 +33,7 @@ a mature tool**.
 The backend is aligned:
 
 - `/obs/loki/*` and `/obs/tempo/*` BFF endpoints were removed by
-  mirador-service ADR-0026 (Spring Boot scope limit).
+  iris-service ADR-0026 (Spring Boot scope limit).
 - `EnvService.grafanaUrl()` is env-aware (compose :3000, kind :13000,
   prod :23000).
 - Grafana has the full LGTM datasources pre-provisioned.
@@ -41,7 +41,7 @@ The backend is aligned:
 ## Decision
 
 **Delete the Observability feature page**. The nav entry becomes a
-redirect to Grafana Explore, pre-filtered on `service.name=mirador`
+redirect to Grafana Explore, pre-filtered on `service.name=iris`
 and pointing at the right datasource (Tempo / Loki / Mimir) based on
 the user's intent.
 

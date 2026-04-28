@@ -43,7 +43,7 @@ bundle-size-check:
   script:
     - |
       MAX_SIZE_KB=500
-      MAIN_JS=$(ls dist/mirador-ui/browser/main-*.js 2>/dev/null | head -1)
+      MAIN_JS=$(ls dist/iris-ui/browser/main-*.js 2>/dev/null | head -1)
       if [ -z "$MAIN_JS" ]; then
         echo "WARN: No main-*.js found in dist, skipping bundle size check"
         exit 0
@@ -128,8 +128,8 @@ e2e:kind:
   variables:
     # Backend service repo — cloned next to the UI checkout so we can
     # run `./run.sh app` against postgres/kafka/redis in compose. Token
-    # is read-only, scoped to the `mirador-service` project.
-    SERVICE_REPO: "https://gitlab.com/mirador1/mirador-service.git"
+    # is read-only, scoped to the `iris-service` project.
+    SERVICE_REPO: "https://gitlab.com/iris-7/iris-service.git"
     E2E_BASE_URL: "http://localhost:4200"
   before_script:
     # Install Java 25 + Maven (Playwright image is Debian jammy-based).
@@ -201,7 +201,7 @@ e2e:kind:
       # the existing pattern used for /actuator/health waiting later
       # in this script.
       (cd /tmp/svc && \
-        DB_PORT=5432 DB_USER=mirador DB_PASSWORD=mirador DB_NAME=mirador \
+        DB_PORT=5432 DB_USER=iris DB_PASSWORD=iris DB_NAME=iris \
         SERVER_PORT=8080 \
         docker compose -p "$COMPOSE_PROJECT" -f docker-compose.yml up -d db kafka redis)
 
@@ -214,7 +214,7 @@ e2e:kind:
       # error + grabs container logs for diagnosis.
       DB_CTR="ci-${CI_JOB_ID}-db-1"
       for i in $(seq 1 60); do
-        docker exec "$DB_CTR" pg_isready -U mirador -d mirador >/dev/null 2>&1 && break
+        docker exec "$DB_CTR" pg_isready -U iris -d iris >/dev/null 2>&1 && break
         [ $i -eq 60 ] && {
           echo "FAIL: postgres not ready after 120 s — last container logs :"
           docker logs --tail=50 "$DB_CTR" || true
@@ -289,9 +289,9 @@ e2e:kind:
       # MB and slow every CI run; -Dcompat is a 4-byte change with
       # the same runtime behavior for our integration purposes.
       (cd /tmp/svc && \
-        SPRING_DATASOURCE_URL="jdbc:postgresql://db:5432/mirador" \
-        SPRING_DATASOURCE_USERNAME=mirador \
-        SPRING_DATASOURCE_PASSWORD=mirador \
+        SPRING_DATASOURCE_URL="jdbc:postgresql://db:5432/iris" \
+        SPRING_DATASOURCE_USERNAME=iris \
+        SPRING_DATASOURCE_PASSWORD=iris \
         SPRING_DATA_REDIS_HOST=redis \
         SPRING_DATA_REDIS_PORT=6379 \
         SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:9092 \
@@ -376,7 +376,7 @@ e2e:kind:
       #    Wave 11 (pipeline #2479025472 evidence) : `http-server -s`
       #    has NO SPA fallback — `-s` is "silent", not "single-page".
       #    Requests to client-side routes like `/login` returned HTTP
-      #    404 because the file `dist/mirador-ui/browser/login` doesn't
+      #    404 because the file `dist/iris-ui/browser/login` doesn't
       #    exist on disk. Playwright then loaded an empty 404 body and
       #    timed out waiting for `getByLabel('Username')` (login form
       #    never rendered). All 3 @golden tests failed for the same
@@ -389,7 +389,7 @@ e2e:kind:
       #    returns 404 on /login, serve -s returns 200 with
       #    index.html → Angular router resolves /login → form renders.
       #    `-l 4200` listen on port 4200 (replaces http-server's `-p`).
-      npx --yes serve -s dist/mirador-ui/browser -l 4200 &
+      npx --yes serve -s dist/iris-ui/browser -l 4200 &
       # Probe `/login` (a client-side route) not `/` so we exercise
       # the SPA fallback path — catches the same regression class
       # that broke wave 11 if `serve` ever gets swapped for a non-SPA

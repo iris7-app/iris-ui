@@ -39,7 +39,7 @@ export interface ActuatorHealth {
 /**
  * Enriched Docker container entry shown in the Architecture & Services
  * widget. The base Docker API fields (name/status/image/running) are
- * augmented by Mirador-side metadata (icon/label/description/detail/url/port)
+ * augmented by Iris-side metadata (icon/label/description/detail/url/port)
  * derived from the SVC port registry.
  *
  * Extracted from the inline signal type in dashboard.component.ts

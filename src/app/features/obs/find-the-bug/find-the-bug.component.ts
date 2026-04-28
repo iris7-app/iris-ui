@@ -104,7 +104,7 @@ export class FindTheBugComponent implements OnDestroy {
       unit: '429s',
       revealAfterMs: 15_000,
       rootCause:
-        'Mirador applies a 100 req/min per-IP rate limit (bucket4j, configured in application.yml). ' +
+        'Iris applies a 100 req/min per-IP rate limit (bucket4j, configured in application.yml). ' +
         'The chaos trigger fired 120 requests in ~3 seconds — the first 100 return 200, the next 20 return 429. ' +
         'The bucket refills at 100/min, so normal traffic recovers within ~60 s.',
       fixSteps: [
@@ -158,13 +158,13 @@ export class FindTheBugComponent implements OnDestroy {
       unit: 'fallback %',
       revealAfterMs: 20_000,
       rootCause:
-        'Ollama is slow (or down). Mirador wraps the /bio call in a Resilience4j circuit breaker — after 10 failures in a rolling window the circuit opens, and subsequent calls short-circuit to the fallback string without touching Ollama. ' +
-        'This is a FEATURE, not a bug: it protects Mirador from a cascading slowdown when Ollama is the bottleneck. ' +
+        'Ollama is slow (or down). Iris wraps the /bio call in a Resilience4j circuit breaker — after 10 failures in a rolling window the circuit opens, and subsequent calls short-circuit to the fallback string without touching Ollama. ' +
+        'This is a FEATURE, not a bug: it protects Iris from a cascading slowdown when Ollama is the bottleneck. ' +
         'The circuit waits 30 s in OPEN state, then allows one probe in HALF_OPEN — if it succeeds, returns to CLOSED.',
       fixSteps: [
         "- Don't try to hammer /bio to 'fix' it — that keeps the circuit OPEN.",
-        '- Check Ollama: `docker logs mirador-ollama-1` — usually a slow model or OOM.',
-        '- Either wait 30 s (auto-recovery) or restart Ollama: `docker restart mirador-ollama-1`.',
+        '- Check Ollama: `docker logs iris-ollama-1` — usually a slow model or OOM.',
+        '- Either wait 30 s (auto-recovery) or restart Ollama: `docker restart iris-ollama-1`.',
       ],
       trigger: async (api) => {
         // Hammer /bio 10 times — Ollama's real state decides whether the
@@ -223,7 +223,7 @@ export class FindTheBugComponent implements OnDestroy {
         "This scenario's takeaway: CPU profile alone lies when virtual threads are involved — pair it with wall-clock or JDBC profiles.",
       fixSteps: [
         '- Switch the Pyroscope profile type from `cpu` to `wall` — the sleep shows up.',
-        '- Check the Mirador Tempo trace: the /aggregate span has TWO parallel child spans (loadCustomerData + loadStats) — both span ~200 ms.',
+        '- Check the Iris Tempo trace: the /aggregate span has TWO parallel child spans (loadCustomerData + loadStats) — both span ~200 ms.',
         '- "Fix" here = accept the 200 ms as designed. In a real slow endpoint, the same tools (Tempo + Pyroscope wall-clock) would isolate the blocking caller.',
       ],
       trigger: async (api) => {

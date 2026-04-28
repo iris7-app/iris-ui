@@ -1,6 +1,6 @@
 # =============================================================================
-# OSSF Scorecard — same as mirador-service.
-# See mirador-service/docs/ops/github-mirror.md for philosophy.
+# OSSF Scorecard — same as iris-service.
+# See iris-service/docs/ops/github-mirror.md for philosophy.
 # =============================================================================
 name: OSSF Scorecard
 

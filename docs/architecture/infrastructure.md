@@ -115,10 +115,10 @@ curl -s -X POST http://localhost:8080/customers \
 
 ## External Services
 
-Cloud and SaaS services used by Mirador (require an account or subscription).
+Cloud and SaaS services used by Iris (require an account or subscription).
 
-- **[GitLab](https://gitlab.com/mirador1)** — Source code, CI/CD pipelines, MR auto-merge
-- **[SonarCloud](https://sonarcloud.io/project/overview?id=mirador1_mirador-service)** — Static analysis, code coverage, security hotspots
+- **[GitLab](https://gitlab.com/iris-7)** — Source code, CI/CD pipelines, MR auto-merge
+- **[SonarCloud](https://sonarcloud.io/project/overview?id=iris-7_iris-service)** — Static analysis, code coverage, security hotspots
 - **[Auth0](https://manage.auth0.com/)** — JWT / OIDC identity provider (alternative to Keycloak)
 - **[DuckDNS](https://www.duckdns.org/)** — Free dynamic DNS for GKE public endpoint
 - **[Google Cloud](https://console.cloud.google.com/)** — GKE Autopilot, Cloud SQL, Artifact Registry, Cloud Run

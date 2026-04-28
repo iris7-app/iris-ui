@@ -17,9 +17,9 @@ A **kind** cluster mirrors the production Kubernetes setup on your laptop in min
 ./run.sh k8s-local-delete   # tear everything down
 ```
 
-The script creates a single-node kind cluster, installs nginx-ingress, builds `mirador/backend:local` and `mirador/frontend:local`, loads them into kind (no registry push needed), applies all manifests, and waits for rollouts.
+The script creates a single-node kind cluster, installs nginx-ingress, builds `iris/backend:local` and `iris/frontend:local`, loads them into kind (no registry push needed), applies all manifests, and waits for rollouts.
 
-Access the app at **`http://mirador.127.0.0.1.nip.io:8090`** — nip.io resolves `*.127.0.0.1.nip.io` to `127.0.0.1`, so the cluster is reachable from the host without any system configuration.
+Access the app at **`http://iris.127.0.0.1.nip.io:8090`** — nip.io resolves `*.127.0.0.1.nip.io` to `127.0.0.1`, so the cluster is reachable from the host without any system configuration.
 
 ## What `./run.sh k8s-local` does
 

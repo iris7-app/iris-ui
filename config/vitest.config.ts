@@ -1,5 +1,5 @@
 // moved 2026-04-20 from repo root per root-hygiene rule (see ~/.claude/CLAUDE.md).
-// Wired in via angular.json → projects.mirador-ui.architect.test.options.runnerConfig.
+// Wired in via angular.json → projects.iris-ui.architect.test.options.runnerConfig.
 // Without that option, @angular/build:unit-test defaults `runnerConfig: false` and this
 // file is NEVER loaded — the pool tuning below only takes effect when the builder is
 // explicitly pointed here. Before this move the file sat at root and was de-facto

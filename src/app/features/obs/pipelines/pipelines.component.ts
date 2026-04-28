@@ -6,7 +6,7 @@
  * Spring Boot process.
  *
  * Features:
- * - Project switch (mirador-ui / mirador-service)
+ * - Project switch (iris-ui / iris-service)
  * - Auto-refresh (10 s / 30 s / 60 s / off)
  * - Per-pipeline job drill-down with runner tag + duration
  * - Status-aware styling (success / failed / running / …)

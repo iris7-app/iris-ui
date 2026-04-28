@@ -28,10 +28,10 @@
 > - 🛠 **DevX** — Lefthook commit-msg + pre-push (`scripts/pre-push-checks.sh` runs typecheck + prettier + tests + build) + Vitest watch mode + Renovate weekly + Compodoc API docs + audit-lighthouse script + record-demo (gif/screencast) + bin/ship.sh release flow + scheduled tasks for dated TODOs.
 
 <!-- Build / release status — GitLab canonical, GitHub mirror for visibility. -->
-[![pipeline](https://gitlab.com/mirador1/mirador-ui/badges/main/pipeline.svg)](https://gitlab.com/mirador1/mirador-ui/-/pipelines)
-[![latest release](https://gitlab.com/mirador1/mirador-ui/-/badges/release.svg)](https://gitlab.com/mirador1/mirador-ui/-/releases)
-[![CodeQL](https://github.com/mirador1/mirador-ui/actions/workflows/codeql.yml/badge.svg)](https://github.com/mirador1/mirador-ui/actions/workflows/codeql.yml)
-[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/mirador1/mirador-ui/badge)](https://scorecard.dev/viewer/?uri=github.com/mirador1/mirador-ui)
+[![pipeline](https://gitlab.com/iris-7/iris-ui/badges/main/pipeline.svg)](https://gitlab.com/iris-7/iris-ui/-/pipelines)
+[![latest release](https://gitlab.com/iris-7/iris-ui/-/badges/release.svg)](https://gitlab.com/iris-7/iris-ui/-/releases)
+[![CodeQL](https://github.com/iris-7/iris-ui/actions/workflows/codeql.yml/badge.svg)](https://github.com/iris-7/iris-ui/actions/workflows/codeql.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/iris-7/iris-ui/badge)](https://scorecard.dev/viewer/?uri=github.com/iris-7/iris-ui)
 
 <!-- Top-line badges : 8 essentials. The exhaustive tech matrix moved
      to a "Technology coverage" section further down. -->
@@ -44,7 +44,7 @@
 
 ## What this project proves
 
-Mirador-UI is the **front-row seat** of the [Mirador](https://gitlab.com/mirador1)
+Iris-UI is the **front-row seat** of the [Iris](https://gitlab.com/iris-7)
 polyrepo demo : an Angular 21 zoneless dashboard that observes a live
 backend (Java OR Python sibling) from every angle in one place.
 
@@ -68,24 +68,24 @@ Industrial frontend concerns demonstrated :
 - **Observability dashboard for a live backend** : not a CRUD demo — the UI
   surfaces JVM metrics, OTel traces, error timelines, SLO status from
   Prometheus / Tempo / Loki via a Grafana proxy.
-- **Polyrepo coherence** : same UI talks to either [Java backend](https://gitlab.com/mirador1/mirador-service-java)
-  or [Python backend](https://gitlab.com/mirador1/mirador-service-python) — same REST contract.
+- **Polyrepo coherence** : same UI talks to either [Java backend](https://gitlab.com/iris-7/iris-service-java)
+  or [Python backend](https://gitlab.com/iris-7/iris-service-python) — same REST contract.
 - **Quality bar** : Vitest unit + Playwright E2E kind-in-CI + SonarCloud +
   ESLint zero-warning + bundle size budget enforced.
 - **Local CI runner** : same group-level macbook-local runner as the
   sibling repos (no SaaS quota burn).
 
-# Mirador UI — front-row seat
+# Iris UI — front-row seat
 
 > **Watch. Understand. Act.**
 >
 > _Built with the right tools and the right methods._
 
-![Mirador UI demo — login, customer CRUD, dashboard](docs/media/demo.gif)
+![Iris UI demo — login, customer CRUD, dashboard](docs/media/demo.gif)
 
 <sub>Regenerate with `bin/record-demo.sh` (needs ffmpeg + the local stack up).</sub>
 
-> **Mirador** — Spanish for *watchtower* — is exactly what this project is:
+> **Iris** — Spanish for *watchtower* — is exactly what this project is:
 > a vantage point over a real running system that lets you observe, in one
 > place, **the code, the runtime metrics, the CI/CD pipelines, and the
 > industrial tooling** wired around it. The UI is the front-row seat:
@@ -105,7 +105,7 @@ Industrial frontend concerns demonstrated :
 > so the git log doubles as an audit trail.
 >
 > This repository is the **Angular 21 frontend**. The Spring Boot 4
-> backend lives at [`mirador-service`](https://gitlab.com/mirador1/mirador-service).
+> backend lives at [`iris-service`](https://gitlab.com/iris-7/iris-service).
 
 ---
 
@@ -149,14 +149,14 @@ Non-obvious choices are justified in ADRs under [`docs/adr/`](docs/adr/README.md
 
 ### Sibling repo
 
-- Backend: **[`mirador-service`](https://gitlab.com/mirador1/mirador-service)** — Spring Boot 4 / Java 25, lives as a sibling directory so `bin/run.sh` can delegate infra commands.
+- Backend: **[`iris-service`](https://gitlab.com/iris-7/iris-service)** — Spring Boot 4 / Java 25, lives as a sibling directory so `bin/run.sh` can delegate infra commands.
 
 ---
 
 ## Project structure
 
 ```
-mirador-ui/
+iris-ui/
 ├── src/
 │   ├── main.ts                          # Application bootstrap (zoneless)
 │   ├── styles.scss                      # Global styles + CSS custom properties
@@ -193,11 +193,11 @@ mirador-ui/
 
 ```bash
 # Clone both repos as siblings (run from your dev root)
-git clone https://gitlab.com/benoit.besson/mirador-service.git workspace-modern/mirador-service
-git clone https://gitlab.com/benoit.besson/mirador-ui.git js/mirador-ui
+git clone https://gitlab.com/benoit.besson/iris-service.git workspace-modern/iris-service
+git clone https://gitlab.com/benoit.besson/iris-ui.git js/iris-ui
 
 # Start everything (Docker + backend + frontend) — one command
-bash js/mirador-ui/run.sh
+bash js/iris-ui/run.sh
 ```
 
 Sign in with **admin / admin** at <http://localhost:4200>. See [docs/getting-started/quick-start.md](docs/getting-started/quick-start.md) for prerequisites and troubleshooting.

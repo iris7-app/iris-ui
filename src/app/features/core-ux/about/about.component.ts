@@ -73,5 +73,5 @@ export class AboutComponent {
    * GitLab (and versioned in-repo, so deep-links survive refactors
    * unlike the old inline copy).
    */
-  readonly docsBase = 'https://gitlab.com/mirador1/mirador-ui/-/blob/main/docs/architecture';
+  readonly docsBase = 'https://gitlab.com/iris-7/iris-ui/-/blob/main/docs/architecture';
 }

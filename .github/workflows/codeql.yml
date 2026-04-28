@@ -3,7 +3,7 @@
 #
 # Same rationale as the service side: GitHub-native SAST that runs
 # nowhere else without extra setup. See docs/ops/github-mirror.md
-# in mirador-service for the philosophy.
+# in iris-service for the philosophy.
 #
 # Narrow by design — no build, no tests. Unit tests + integration run
 # on GitLab CI (canonical).

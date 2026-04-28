@@ -116,7 +116,7 @@ lint:circular-deps:
 
 # ── Stage: e2e ───────────────────────────────────────────────────────────────
 # Playwright browser suite against a live backend. Rationale + scope:
-# `docs/adr/0033-playwright-e2e-in-kind-in-ci.md` in the mirador-service
+# `docs/adr/0033-playwright-e2e-in-kind-in-ci.md` in the iris-service
 # repo.
 #
 # Topology: the backend runs inside this job (docker-compose from the

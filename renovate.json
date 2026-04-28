@@ -1,7 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "description": [
-    "Mirador UI — automated npm + Docker dependency updates.",
+    "Iris UI — automated npm + Docker dependency updates.",
     "Angular 21 is sensitive to cross-package version skew, so all @angular/*",
     "packages are grouped and updated in lockstep. Node.js majors require",
     "human review (may break Vitest / Angular CLI)."

@@ -111,8 +111,8 @@ describe('quality-helpers', () => {
 
   describe('gitWebUrl()', () => {
     it('converts an SSH git URL to its HTTPS browse URL', () => {
-      expect(gitWebUrl('git@gitlab.com:mirador1/mirador-service.git')).toBe(
-        'https://gitlab.com/mirador1/mirador-service',
+      expect(gitWebUrl('git@gitlab.com:iris-7/iris-service.git')).toBe(
+        'https://gitlab.com/iris-7/iris-service',
       );
     });
 
@@ -131,8 +131,8 @@ describe('quality-helpers', () => {
 
   describe('commitUrl()', () => {
     it('uses GitLab path style (/-/commit/)', () => {
-      expect(commitUrl('git@gitlab.com:mirador1/mirador-service.git', 'abc123')).toBe(
-        'https://gitlab.com/mirador1/mirador-service/-/commit/abc123',
+      expect(commitUrl('git@gitlab.com:iris-7/iris-service.git', 'abc123')).toBe(
+        'https://gitlab.com/iris-7/iris-service/-/commit/abc123',
       );
     });
 

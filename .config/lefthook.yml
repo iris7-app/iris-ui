@@ -1,5 +1,5 @@
 # =============================================================================
-# lefthook.yml — Git hooks for mirador-ui
+# lefthook.yml — Git hooks for iris-ui
 #
 # moved 2026-04-20 from repo root to .config/ per root-hygiene rule (see
 # ~/.claude/CLAUDE.md). lefthook 2.1.5 auto-discovers `.config/lefthook.yml`
@@ -15,7 +15,7 @@
 # Install: `npx lefthook install` (wires hooks into .git/hooks/)
 # Bypass:  `LEFTHOOK=0 git commit / push` (emergency only)
 #
-# Mirrors the sibling mirador-service/lefthook.yml. Every hook degrades
+# Mirrors the sibling iris-service/lefthook.yml. Every hook degrades
 # gracefully when the underlying tool isn't installed.
 # =============================================================================
 
@@ -23,7 +23,7 @@ pre-commit:
   parallel: true
   commands:
     readme-i18n-sync:
-      # Keep README.md ↔ README.fr.md in sync — see mirador-service's
+      # Keep README.md ↔ README.fr.md in sync — see iris-service's
       # lefthook.yml for the rationale. Skippable via LEFTHOOK=0.
       glob: "{README.md,README.fr.md}"
       run: |
@@ -117,7 +117,7 @@ commit-msg:
       # Pure-bash Conventional Commits enforcement. No npm install needed —
       # this is a frontend repo but the check is simple enough to not warrant
       # the commitlint package + its deps just for a regex match.
-      # Mirrors the regex used in mirador-service/lefthook.yml.
+      # Mirrors the regex used in iris-service/lefthook.yml.
       run: |
         msg_file="{1}"
         first_line=$(head -n1 "$msg_file" | tr -d '\r')

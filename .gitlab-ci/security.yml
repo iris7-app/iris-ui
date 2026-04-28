@@ -27,9 +27,9 @@ security:audit:
 #
 # Prerequisites (one-time setup):
 #   1. Create org at https://sonarcloud.io (log in with GitLab)
-#   2. Import the mirador-ui project (auto-detected from GitLab)
+#   2. Import the iris-ui project (auto-detected from GitLab)
 #   3. Generate a token at https://sonarcloud.io/account/security
-#   4. Set SONAR_TOKEN in GitLab group CI/CD variables (mirador1 → Settings → CI/CD)
+#   4. Set SONAR_TOKEN in GitLab group CI/CD variables (iris-7 → Settings → CI/CD)
 #
 # No SONAR_HOST_URL needed — hardcoded to sonarcloud.io.
 trivy:scan:

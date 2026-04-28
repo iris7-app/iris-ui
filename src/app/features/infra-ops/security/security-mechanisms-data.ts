@@ -1,5 +1,5 @@
 /**
- * Static catalogue of production-active security mechanisms in Mirador.
+ * Static catalogue of production-active security mechanisms in Iris.
  *
  * Each entry documents WHAT mechanism is in place + WHERE it lives in
  * the codebase. Read by the SecurityMechanismsTab widget to render the

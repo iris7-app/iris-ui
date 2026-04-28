@@ -26,7 +26,7 @@ const UI = 'http://localhost:4200';
 const METRICS_DRILLDOWN =
   'http://localhost:3000/a/grafana-metricsdrilldown-app/drilldown' +
   '?from=now-15m&to=now&timezone=browser' +
-  '&var-ds=prometheus&var-filters=service_name%7C%3D%7Cmirador' +
+  '&var-ds=prometheus&var-filters=service_name%7C%3D%7Ciris' +
   '&metric=http_server_requests_seconds_max' +
   '&actionView=breakdown&var-groupby=%24__all&breakdownLayout=grid';
 

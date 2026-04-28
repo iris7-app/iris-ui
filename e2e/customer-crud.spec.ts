@@ -48,7 +48,7 @@ test.describe('Customer CRUD @golden', () => {
     // Value MUST be `'true'` literally — TourService#hasSeen() does
     // `=== 'true'` (strict string compare). `'1'` would silently fail.
     await page.addInitScript(() => {
-      window.localStorage.setItem('mirador:tour:seen', 'true');
+      window.localStorage.setItem('iris:tour:seen', 'true');
     });
   });
 

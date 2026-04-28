@@ -1,4 +1,4 @@
-# Mirador UI — Documentation
+# Iris UI — Documentation
 
 All long-form documentation for the Angular 21 frontend. The root
 `README.md` links here; everything more detailed than a paragraph lives
@@ -119,9 +119,9 @@ npm run typedoc          # static generation only
 
 ## Cross-repo
 
-- Backend companion docs: `../../mirador-service/docs/` (same layout).
+- Backend companion docs: `../../iris-service/docs/` (same layout).
 - Technology glossary for the backend:
-  [mirador-service/docs/reference/technologies.md](https://gitlab.com/mirador1/mirador-service/-/blob/main/docs/reference/technologies.md)
+  [iris-service/docs/reference/technologies.md](https://gitlab.com/iris-7/iris-service/-/blob/main/docs/reference/technologies.md)
 
 ## Follow-ups (see `../TASKS.md`)
 

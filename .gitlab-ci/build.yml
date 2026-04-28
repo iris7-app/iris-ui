@@ -36,9 +36,9 @@ build:production:
       echo "$BUILD_OUT" > dist/build-warnings.txt
     - |
       echo "── Bundle analysis ──"
-      du -sh dist/mirador-ui/browser/*.js 2>/dev/null | sort -rh | head -10 || true
+      du -sh dist/iris-ui/browser/*.js 2>/dev/null | sort -rh | head -10 || true
       echo ""
-      TOTAL=$(du -sh dist/mirador-ui/browser/ 2>/dev/null | cut -f1 || echo "n/a")
+      TOTAL=$(du -sh dist/iris-ui/browser/ 2>/dev/null | cut -f1 || echo "n/a")
       echo "Total bundle size: $TOTAL"
   artifacts:
     paths:

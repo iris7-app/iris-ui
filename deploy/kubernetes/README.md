@@ -9,21 +9,21 @@ dependencies other than the compiled JS/HTML/CSS bundle.
 
 | Directory                 | Role                                                                                                                                                      |
 | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`frontend/`](frontend/)  | Deployment + Service for the `customer-ui` nginx container. Image built by this repo's `docker-build` CI job and pushed to `registry.gitlab.com/mirador1/mirador-ui`. |
+| [`frontend/`](frontend/)  | Deployment + Service for the `customer-ui` nginx container. Image built by this repo's `docker-build` CI job and pushed to `registry.gitlab.com/iris-7/iris-ui`. |
 
-## How this relates to `mirador-service`'s `deploy/kubernetes/`
+## How this relates to `iris-service`'s `deploy/kubernetes/`
 
 The Spring Boot backend repository has its own `deploy/kubernetes/` directory with its
 own Deployment, Service, HPA, ConfigMap, Ingress, etc. Both projects share
 the **same K8s namespace (`app`)** and the **same Ingress** — the
 backend's `deploy/kubernetes/ingress.yaml` routes `/api/*` → backend and `/*` → frontend
-on the shared hostname (`mirador1.duckdns.org`). So this directory only
-owns the frontend resources; the Ingress lives in `mirador-service/deploy/kubernetes/`.
+on the shared hostname (`iris7.duckdns.org`). So this directory only
+owns the frontend resources; the Ingress lives in `iris-service/deploy/kubernetes/`.
 
 ## Deploy flow (from `.gitlab-ci.yml`)
 
 ```
-docker-build → push image to registry.gitlab.com/mirador1/mirador-ui:$SHA
+docker-build → push image to registry.gitlab.com/iris-7/iris-ui:$SHA
   ↓
 deploy:gke → kubectl apply deploy/kubernetes/frontend/{deployment,service}.yaml
                (envsubst substitutes $IMAGE_TAG, $CI_REGISTRY_IMAGE)
@@ -34,9 +34,9 @@ its own image to avoid tag mismatches.
 
 ## What NOT to put here
 
-- **Ingress** → belongs in `mirador-service/deploy/kubernetes/ingress.yaml` (single
+- **Ingress** → belongs in `iris-service/deploy/kubernetes/ingress.yaml` (single
   entry point for both frontend and backend).
-- **Cloud infrastructure** (VPC, GKE cluster) → `mirador-service/terraform/gcp/`.
+- **Cloud infrastructure** (VPC, GKE cluster) → `iris-service/terraform/gcp/`.
 - **Local Docker Compose configs** → this repo has none (the frontend runs
   via `ng serve --proxy-config proxy.conf.json` locally, not a Docker
   container).

@@ -172,7 +172,7 @@ export const DASHBOARD_TOPO_NODES: readonly TopoNode[] = [
       'Ollama runs the llama3.2 model locally. Powers /customers/{id}/bio via Spring AI ChatClient. Protected by Resilience4j circuit breaker — 10 failed calls in 60s trips the breaker, returns 503 fallback immediately for 30s before half-opening.',
   },
   // Col 3 — Data Tools. Single CloudBeaver tile replaces the former
-  // pgAdmin + pgweb split (mirador-service MR 77).
+  // pgAdmin + pgweb split (iris-service MR 77).
   {
     id: 'cloudbeaver',
     label: 'CloudBeaver',
@@ -201,7 +201,7 @@ export const DASHBOARD_TOPO_NODES: readonly TopoNode[] = [
       'RedisInsight — visual Redis explorer. Browse keys (idempotency keys with TTL, recent customer ring buffer, rate limit buckets), inspect data types, monitor memory usage, run Redis commands. Connect to redis-demo:6379.',
     image: 'images/tools/redisinsight.png',
   },
-  // Redis Commander node removed with mirador-service MR 77 cleanup.
+  // Redis Commander node removed with iris-service MR 77 cleanup.
   {
     id: 'consumer',
     label: 'Kafka Consumer',
@@ -248,10 +248,10 @@ export const DASHBOARD_TOPO_NODES: readonly TopoNode[] = [
     col: 5,
     row: 0,
     icon: '🌍',
-    url: 'https://gitlab.com/mirador1/mirador-service/-/pipelines',
+    url: 'https://gitlab.com/iris-7/iris-service/-/pipelines',
     tip: 'Dépôt distant — pipelines gitlab.com',
     detail:
-      "Instance SaaS gitlab.com — groupe mirador1, projets mirador-service et mirador-ui. Les pipelines s'exécutent sur le runner local enregistré (glrt-*). Enregistrer un runner : ./run.sh runner puis ./run.sh register-cloud <TOKEN>. URL : https://gitlab.com/mirador1.",
+      "Instance SaaS gitlab.com — groupe iris-7, projets iris-service et iris-ui. Les pipelines s'exécutent sur le runner local enregistré (glrt-*). Enregistrer un runner : ./run.sh runner puis ./run.sh register-cloud <TOKEN>. URL : https://gitlab.com/iris-7.",
     image: 'images/tools/gitlab.png',
   },
   {
@@ -288,7 +288,7 @@ export const DASHBOARD_TOPO_NODES: readonly TopoNode[] = [
     tip: 'Angular UI API docs — nginx',
     ...SVC.compodoc,
     detail:
-      'Nginx 1.27 serving Compodoc-generated documentation for the Angular frontend at port 8085. Documents all components, services, interfaces, routes with JSDoc — equivalent of Javadoc for the UI. Generate: `cd mirador-ui && npm run compodoc`.',
+      'Nginx 1.27 serving Compodoc-generated documentation for the Angular frontend at port 8085. Documents all components, services, interfaces, routes with JSDoc — equivalent of Javadoc for the UI. Generate: `cd iris-ui && npm run compodoc`.',
   },
 ];
 

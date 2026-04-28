@@ -7,7 +7,7 @@
 # the checked-in snapshot stays the contract-source for TS type generation.
 #
 # Requires: the backend reachable at $BACKEND_URL (default localhost:8080).
-# Start with `./run.sh` in ../workspace-modern/mirador-service or
+# Start with `./run.sh` in ../workspace-modern/iris-service or
 # `./mvnw spring-boot:run`.
 #
 # After this, run `npm run gen:api-types` to regenerate TypeScript types
@@ -37,7 +37,7 @@ fi
 echo "▶ Fetching OpenAPI spec from $BACKEND_URL/v3/api-docs"
 if ! curl -sSf -m 10 "$BACKEND_URL/v3/api-docs" -o "$TARGET.tmp"; then
   echo "Could not reach $BACKEND_URL/v3/api-docs — is the backend running?"
-  echo "Start it with: cd ../workspace-modern/mirador-service && ./run.sh"
+  echo "Start it with: cd ../workspace-modern/iris-service && ./run.sh"
   rm -f "$TARGET.tmp"
   exit 1
 fi

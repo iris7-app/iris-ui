@@ -1,6 +1,6 @@
 # `bin/run.sh` Reference
 
-The `bin/run.sh` script orchestrates the full stack. It delegates infrastructure commands to the backend's own `run.sh` (in the sibling `mirador-service` repo) rather than duplicating Docker Compose logic.
+The `bin/run.sh` script orchestrates the full stack. It delegates infrastructure commands to the backend's own `run.sh` (in the sibling `iris-service` repo) rather than duplicating Docker Compose logic.
 
 ## Subcommands
 

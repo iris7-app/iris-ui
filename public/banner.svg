@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" width="1200" height="280" role="img" aria-label="Mirador UI — watchtower over a running system">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 280" width="1200" height="280" role="img" aria-label="Iris UI — watchtower over a running system">
   <defs>
     <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%"  stop-color="#0a1424"/>
@@ -63,7 +63,7 @@
   </g>
 
   <g font-family="'Inter','Segoe UI',system-ui,sans-serif">
-    <text x="296" y="138" font-size="96" font-weight="800" letter-spacing="6" fill="url(#title-grad)">MIRADOR</text>
+    <text x="296" y="138" font-size="96" font-weight="800" letter-spacing="6" fill="url(#title-grad)">IRIS</text>
     <text x="298" y="174" font-size="15" font-weight="500" fill="#94a3b8" letter-spacing="4.5">
       WATCHTOWER OVER A RUNNING SYSTEM
     </text>
@@ -74,7 +74,7 @@
 
   <g font-family="'JetBrains Mono','Fira Code',ui-monospace,monospace"
      fill="#64748b" font-size="10.5" letter-spacing="1" text-anchor="end">
-    <text x="1170" y="248">mirador-ui  ·  Angular 21  ·  zoneless · signals</text>
-    <text x="1170" y="264" fill="#475569" font-size="9.5">gitlab.com/mirador1  ·  paired backend: mirador-service</text>
+    <text x="1170" y="248">iris-ui  ·  Angular 21  ·  zoneless · signals</text>
+    <text x="1170" y="264" fill="#475569" font-size="9.5">gitlab.com/iris-7  ·  paired backend: iris-service</text>
   </g>
 </svg>

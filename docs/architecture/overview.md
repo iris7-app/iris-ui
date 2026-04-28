@@ -2,14 +2,14 @@
 
 A full-stack observability and management platform built with Angular 21 and Spring Boot 4.
 
-## What is Mirador?
+## What is Iris?
 
 A full-stack **observability and management platform** built with Angular 21 and Spring Boot 4. It demonstrates production-grade patterns for distributed tracing, structured logging, metrics collection, continuous profiling, chaos testing, and resilience — all visible and controllable from the browser.
 
-*Mirador* — Spanish for *watchtower* or *viewpoint*. A place to watch, understand, and act.
+*Iris* — Spanish for *watchtower* or *viewpoint*. A place to watch, understand, and act.
 
-- [gitlab.com/mirador1](https://gitlab.com/mirador1)
-- [mirador1.duckdns.org](http://mirador1.duckdns.org)
+- [gitlab.com/iris-7](https://gitlab.com/iris-7)
+- [iris7.duckdns.org](http://iris7.duckdns.org)
 
 > *(Hero illustration rendered in the UI — see the About page, tab "Overview".)*
 

@@ -1,8 +1,8 @@
 /**
- * Playwright E2E configuration for Mirador UI.
+ * Playwright E2E configuration for Iris UI.
  *
  * Scope + placement rationale: `docs/adr/0033-playwright-e2e-in-kind-in-ci.md`
- * (in the mirador-service repo).
+ * (in the iris-service repo).
  *
  * Key choices:
  * - Chromium only for the first iteration. Firefox + WebKit added
@@ -11,7 +11,7 @@
  * - Retries: 2 on CI to absorb network flakes; 0 locally so the
  *   dev sees the real first-shot failure.
  * - baseURL points at http://localhost:4200 — `ng serve` or
- *   `http-server dist/mirador-ui` during the test run.
+ *   `http-server dist/iris-ui` during the test run.
  * - No global setup / teardown here: each spec is expected to
  *   bring up its own state via the backend API.
  */

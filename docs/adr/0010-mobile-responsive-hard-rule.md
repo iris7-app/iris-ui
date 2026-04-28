@@ -2,7 +2,7 @@
 
 - **Status**: Accepted
 - **Date**: 2026-04-22
-- **Deciders**: Mirador maintainers (user-added rule)
+- **Deciders**: Iris maintainers (user-added rule)
 - **Related**: [ADR-0003](0003-raw-svg-charts.md) (raw SVG = trivially
   responsive), [ADR-0005](0005-standalone-components.md) (each
   component owns its responsiveness), `~/.claude/CLAUDE.md` →
@@ -11,9 +11,9 @@
 
 ## Context
 
-Mirador UI is an Angular 21 dashboard targeting both desktop observability
+Iris UI is an Angular 21 dashboard targeting both desktop observability
 consoles and handheld checks by an on-call engineer. Roughly half of
-"just give me a status" traffic on a real deployed Mirador would come
+"just give me a status" traffic on a real deployed Iris would come
 from someone pulling out their phone — an alert fired, they need to
 see if the cluster is degraded, they don't want to open their laptop.
 
