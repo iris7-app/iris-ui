@@ -1,15 +1,23 @@
-![Mirador UI](public/banner.svg)
+![Iris UI](public/banner.svg)
 
 <sub>**English** · [Français](README.fr.md)</sub>
 
-> **What this project demonstrates mastery of**
+> **Iris — observability-first showcase across 7 facets (UI sibling)**
 >
-> _A 30-second skim of the central themes of current frontend mastery — each axis
-> is verified at every `stable-v*` tag. Source of truth for what "this rev guarantees" :
+> _Aucun point de vue ne raconte tout — chaque facette révèle une partie
+> du système. Comme un diaphragme, l'image complète émerge de la
+> composition. Vérifié à chaque tag `stable-v*`. Source of truth =
 > `git show stable-vX.Y.Z`._
 >
-> - 🤖 **IA** — Frontend client of the polyrepo's MCP servers (mirador-java + mirador-python in-process tools, surfaced via the diagnostic / quality / dashboard pages) + AI-driven enrichment displayed in customer detail views (Ollama-generated bios, observable via `gen_ai.*` traces) + ⏭ no in-process LLM in the UI itself (architectural choice : LLM stays server-side per ADR-0062).
-> - 🔒 **Sécurité** — JWT bearer-token client + Auth0 OIDC bridge service + automatic refresh-token rotation + CORS-aware HTTP interceptor + signal-based `AuthService` (no NgRx dependency) + login redirect on 401 + CSP-compatible build (no inline scripts, no `eval`) + audit-trail screen surfacing backend `audit_event` logs + GitHub CodeQL + OpenSSF Scorecard.
+> - <span style="color: #ff2d20">●</span> **Observability** (the central axis) — OpenTelemetry Web SDK (traces from clicks → backend spans, propagated via traceparent) + Pyroscope-compatible profiling export + ActivityService (in-session timeline) + ErrorTimeline widget surfacing backend logs + MetricsService (frontend-side Prometheus polling + percentile computation) + ToastService for ephemeral user feedback.
+> - <span style="color: #ff9500">●</span> **Infra · Cloud** — Static SPA build (Angular 21 production bundle, ~3.1 MB total / per-route lazy chunks 250 B – 30 KB) + nginx-served container + GKE deploy via the same chart family as the backends + GitHub Pages mirror (release artefacts) + Renovate weekly bumps via `infra/common/renovate-base.json`.
+> - <span style="color: #ffcc00">●</span> **Security** — JWT bearer-token client + Auth0 OIDC bridge service + automatic refresh-token rotation + CORS-aware HTTP interceptor + signal-based `AuthService` (no NgRx dependency) + login redirect on 401 + CSP-compatible build (no inline scripts, no `eval`) + audit-trail screen surfacing backend `audit_event` logs + GitHub CodeQL + OpenSSF Scorecard.
+> - <span style="color: #34c759">●</span> **CI · CD** — GitLab CI multi-stage (lint, test, e2e, package, sonar, deploy) + Conventional Commits enforced (Lefthook + commitlint) + auto-merge with `--remove-source-branch=false` + Playwright E2E in CI (kind-in-docker for backend) + bundle budget gate + GitHub mirror push on tag + GitHub CodeQL on push.
+> - <span style="color: #30c9d4">●</span> **Architecture** — Angular 21 **zoneless change detection** (no Zone.js) + signal-based reactive state + `@if`/`@for`/`@switch` control-flow blocks (no `*ngIf`) + standalone components + lazy-loaded routes (every feature is a separate chunk) + AppShellComponent layout + 1 widget = 1 file (`features/core-ux/dashboard/widgets/*` per File length hygiene rule) + feature-slicing under `features/{commerce, customer, core-ux, infra-ops, obs}` + Clean Code 7 non-negotiables.
+> - <span style="color: #007aff">●</span> **AI · ML** — Frontend client of the polyrepo's MCP servers (iris-java + iris-python in-process tools, surfaced via the diagnostic / quality / dashboard pages) + AI-driven enrichment displayed in customer detail views (Ollama-generated bios, observable via `gen_ai.*` traces) + ⏭ no in-process LLM in the UI itself (architectural choice : LLM stays server-side per ADR-0062).
+> - <span style="color: #af52de">●</span> **Quality** — Vitest unit tests (53 spec files, 367 tests pass, zoneless) + Playwright E2E mobile (390×844) + desktop (1280×1024) viewports + production build with **zero warnings** (TypeScript strict mode, NG8113 unused-imports, prettier, no `*ngIf`/`*ngFor` legacy directives) + SonarCloud quality gate + ESLint flat config + budget limits (Initial JS 800 KB warn / 1 MB error).
+>
+> _Plus complementary dimensions : Fonctionnel (9 Order/Product e-commerce screens + Customer onboarding flow), Frontend (Angular 21 zoneless + signals + raw SVG charts + mobile-responsive), DevX (Lefthook + Vitest watch + Compodoc + Renovate)._
 > - 🧠 **Fonctionnel** — 9 Order/Product e-commerce screens shipped in `stable-v1.1.6` (list / detail / create / edit for both, with form validation, signal-based total recompute, mobile-responsive tap targets) + Customer onboarding & enrichment flow + Observability dashboard (architecture map / health probes / error timeline / bundle treemap widgets) + Diagnostic / Chaos / Quality / Security / Pipelines screens.
 > - ☁️ **Infrastructure & Cloud** — Static SPA build (Angular 21 production bundle, ~3.1 MB total / per-route lazy chunks 250 B – 30 KB) + nginx-served container + GKE deploy via the same chart family as the backends + GitHub Pages mirror (release artefacts) + Renovate weekly bumps via `infra/common/renovate-base.json`.
 > - 📊 **Observabilité** — OpenTelemetry Web SDK (traces from clicks → backend spans, propagated via traceparent) + Pyroscope-compatible profiling export + ActivityService (in-session timeline) + ErrorTimeline widget surfacing backend logs + MetricsService (frontend-side Prometheus polling + percentile computation) + ToastService for ephemeral user feedback.
