@@ -107,6 +107,10 @@ clavier, theming multi-environnement, etc.), voir la version
 anglaise : [README.md](README.md#documentation). Les commandes et
 chemins de fichiers sont identiques dans les deux versions.
 
+> Doc API auto-générée : `npm run compodoc` (Angular-aware) ou
+> `npm run typedoc` (TypeScript brut) — sortie sous `docs/compodoc/`
+> ou `docs/typedoc/` (gitignorés, régénérés à la demande).
+
 ---
 
 <sub>_Mirador_ — espagnol pour _mirador_ — se tient au premier rang
