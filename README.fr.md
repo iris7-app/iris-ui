@@ -22,14 +22,15 @@
 
 <sub>Régénération : `bin/record-demo.sh` (nécessite ffmpeg + la stack locale allumée).</sub>
 
-**Iris** — *watchtower* en espagnol — c'est exactement ce qu'est
-ce projet : un point d'observation d'un système réel qui tourne,
-qui te permet d'observer en un seul endroit **le code, les métriques
-runtime, les pipelines CI/CD, et l'outillage industriel** câblé
-autour. L'UI est le siège au premier rang : probes de santé, traces,
-logs, rapports qualité, état des pipelines, actions de chaos, et
-drill-down opérationnel live sur le backend — adossé à Grafana /
-Tempo / Loki / Mimir pour l'observabilité time-series.
+**Iris** — comme le diaphragme d'un appareil photo — compose la vue
+d'un système réel qui tourne sous tous les angles à la fois. L'UI te
+permet d'observer en un seul endroit **le code, les métriques runtime,
+les pipelines CI/CD, et l'outillage industriel** câblé autour. C'est
+le siège au premier rang : probes de santé, traces, logs, rapports
+qualité, état des pipelines, actions de chaos, et drill-down
+opérationnel live sur le backend — adossé à Grafana / Tempo / Loki /
+Mimir pour l'observabilité time-series. Aucune facette ne raconte
+tout — le système entier émerge de leur composition.
 
 Ce repo est aussi une **étude concrète de jusqu'où l'intégration
 assistée par IA peut aller**. Chaque ADR, chaque étape de hardening
@@ -43,7 +44,7 @@ Chaque commit porte un trailer `Co-Authored-By:` qui nomme le modèle
 exact — le log git sert de piste d'audit.
 
 Ce repo est le **frontend Angular 21**. Le backend Spring Boot 4
-vit à [`iris-service`](https://gitlab.com/iris-7/iris-service).
+vit à [`iris-service-java`](https://gitlab.com/iris-7/iris-service-java).
 
 ## Ce que l'UI expose
 
