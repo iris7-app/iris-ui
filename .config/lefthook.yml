@@ -83,6 +83,14 @@ pre-commit:
           echo "⚠️  kubectl not installed — skipping k8s dry-run"
           exit 0
         fi
+        # Skip if cluster unreachable — kubectl apply --dry-run=client still
+        # needs the server to retrieve current resource state. Local commits
+        # should not block when the demo GKE cluster is paused (cost-control
+        # policy). CI re-runs this validation against a live cluster anyway.
+        if ! kubectl cluster-info --request-timeout=2s >/dev/null 2>&1; then
+          echo "⚠️  kubectl cluster unreachable — skipping k8s dry-run (CI will validate)"
+          exit 0
+        fi
         kustomize_dirs=""
         other_files=""
         for f in {staged_files}; do
