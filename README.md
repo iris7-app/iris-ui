@@ -136,8 +136,8 @@ Non-obvious choices are justified in ADRs under [`docs/adr/`](docs/adr/README.md
 
 ### Auto-generated API reference
 
-- **Compodoc** (Angular-aware) — `npm run compodoc`, output in [`docs/compodoc/`](docs/compodoc/)
-- **TypeDoc** (raw TypeScript) — `npm run typedoc`, output in [`docs/typedoc/`](docs/typedoc/)
+- **Compodoc** (Angular-aware) — `npm run compodoc` populates `docs/compodoc/` (gitignored, regenerated on demand)
+- **TypeDoc** (raw TypeScript) — `npm run typedoc` populates `docs/typedoc/` (gitignored, regenerated on demand)
 
 ### Sibling repo
 
