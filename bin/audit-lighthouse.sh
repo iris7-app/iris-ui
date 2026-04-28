@@ -11,7 +11,7 @@
 # not a SaaS dashboard that disappears.
 #
 # Prereq: backend on :8080 + UI on :4200, both up via `./run.sh app`
-# (or `./run.sh all`) in the sibling mirador-service repo, and
+# (or `./run.sh all`) in the sibling iris-service repo, and
 # `npm start` here.
 #
 # Usage:

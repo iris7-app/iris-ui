@@ -16,19 +16,19 @@ Both repos must live as siblings (the frontend's `bin/run.sh` locates the backen
 
 ```
 dev/
-  workspace-modern/mirador-service/   ← backend
-  js/mirador-ui/                       ← this repo (frontend)
+  workspace-modern/iris-service/   ← backend
+  js/iris-ui/                       ← this repo (frontend)
 ```
 
 ## First-time setup — complete stack
 
 ```bash
 # Clone both repos (run from your dev root)
-git clone https://gitlab.com/benoit.besson/mirador-service.git workspace-modern/mirador-service
-git clone https://gitlab.com/benoit.besson/mirador-ui.git js/mirador-ui
+git clone https://gitlab.com/benoit.besson/iris-service.git workspace-modern/iris-service
+git clone https://gitlab.com/benoit.besson/iris-ui.git js/iris-ui
 
 # Start everything — one command
-bash js/mirador-ui/run.sh
+bash js/iris-ui/run.sh
 ```
 
 Docker starts automatically. Sign in with **admin / admin** at http://localhost:4200.
@@ -36,7 +36,7 @@ Docker starts automatically. Sign in with **admin / admin** at http://localhost:
 ## Backend only
 
 ```bash
-bash workspace-modern/mirador-service/run.sh all
+bash workspace-modern/iris-service/run.sh all
 # → API at http://localhost:8080/swagger-ui.html  (admin/admin)
 ```
 

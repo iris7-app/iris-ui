@@ -4,7 +4,7 @@
   "entryPoints": ["../src/app"],
   "tsconfig": "../tsconfig.app.json",
   "out": "../docs/typedoc",
-  "name": "Mirador UI — TypeScript API Docs",
+  "name": "Iris UI — TypeScript API Docs",
   "readme": "none",
   "excludePrivate": true,
   "excludeProtected": false,
@@ -12,8 +12,8 @@
   "excludeNotDocumented": false,
   "includeVersion": true,
   "navigationLinks": {
-    "GitLab": "https://gitlab.com/mirador1/mirador-ui",
-    "Backend API": "https://mirador1.duckdns.org/swagger-ui.html"
+    "GitLab": "https://gitlab.com/iris-7/iris-ui",
+    "Backend API": "https://iris7.duckdns.org/swagger-ui.html"
   },
   "logLevel": "Warn",
   "treatWarningsAsErrors": false,

@@ -106,8 +106,8 @@ export class QualityComponent implements OnInit, OnDestroy {
   ];
 
   /**
-   * SonarQube projects list URL — shows both mirador (Java) and mirador-ui (Angular).
-   * /projects lists all projects; /dashboard?id=X is single-project and would hide mirador-ui.
+   * SonarQube projects list URL — shows both iris (Java) and iris-ui (Angular).
+   * /projects lists all projects; /dashboard?id=X is single-project and would hide iris-ui.
    */
   get sonarUrl(): string {
     return `${this.env.sonarUrl() ?? 'http://localhost:9000'}/projects`;
@@ -115,12 +115,12 @@ export class QualityComponent implements OnInit, OnDestroy {
 
   /** Direct SonarQube URL for the backend (Java) project. */
   get sonarBackendUrl(): string {
-    return `${this.env.sonarUrl() ?? 'http://localhost:9000'}/dashboard?id=mirador`;
+    return `${this.env.sonarUrl() ?? 'http://localhost:9000'}/dashboard?id=iris`;
   }
 
   /** Direct SonarQube URL for the frontend (Angular) project. */
   get sonarFrontendUrl(): string {
-    return `${this.env.sonarUrl() ?? 'http://localhost:9000'}/dashboard?id=mirador-ui`;
+    return `${this.env.sonarUrl() ?? 'http://localhost:9000'}/dashboard?id=iris-ui`;
   }
 
   /** Base URL of the Maven site: dedicated nginx server if configured, backend fallback. */

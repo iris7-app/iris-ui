@@ -5,7 +5,7 @@
 
 ## Context
 
-The backend (`mirador-service`) ships a full LGTM stack (Loki, Grafana,
+The backend (`iris-service`) ships a full LGTM stack (Loki, Grafana,
 Tempo, Mimir) via `docker-compose.observability.yml`, plus the production
 deployment emits OTLP to Grafana Cloud. Grafana is therefore the
 authoritative home for dashboards, alerts, and long-term metric storage.
@@ -103,7 +103,7 @@ current duplication is a transition state, not the end state.
 - `src/app/features/observability/` — current in-app panels.
 - `src/app/features/visualizations/` — current in-app visualisations.
 - `src/app/features/dashboard/` — summary cards.
-- Backend LGTM stack: `mirador-service/docker-compose.observability.yml`.
+- Backend LGTM stack: `iris-service/docker-compose.observability.yml`.
 - Related `TASKS.md` entries: "Grafana-as-Code" and
   "UI → Grafana migration audit".
 - [ADR-0003](0003-raw-svg-charts.md) — raw-SVG charting rationale,

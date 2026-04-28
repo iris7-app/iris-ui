@@ -1,4 +1,4 @@
-# TASKS — mirador-ui
+# TASKS — iris-ui
 
 Open work only. Per `~/.claude/CLAUDE.md` rules : UI-only items
 here ; done items removed (use `git tag -l` for history).
@@ -9,22 +9,22 @@ Recreated 2026-04-28 to capture the **Iris rebrand** in flight.
 
 ## 🌀 IRIS REBRAND (in flight 2026-04-28)
 
-Coordinated rename Mirador → Iris. See full context + phases in
-[Java TASKS.md](https://gitlab.com/mirador1/mirador-service-java/-/blob/main/TASKS.md#-iris-rebrand-in-flight-2026-04-28).
+Coordinated rename Iris → Iris. See full context + phases in
+[Java TASKS.md](https://gitlab.com/iris-7/iris-service-java/-/blob/main/TASKS.md#-iris-rebrand-in-flight-2026-04-28).
 
 UI-side scope :
 
-- **Code-level** : 138 files, 789 refs to "mirador". Affects :
-  - Angular routes (`/mirador/*` if any → `/iris/*`)
-  - Feature module names + component class names with "Mirador" prefix
-  - `ApiService` env URLs (`mirador1.duckdns.org` → `iris1.duckdns.org`)
-  - Component copydeck text ("Mirador watchtower" → "Iris — 7 FACETS")
-  - RBAC role mappings if they include "mirador"
+- **Code-level** : 138 files, 789 refs to "iris". Affects :
+  - Angular routes (`/iris/*` if any → `/iris/*`)
+  - Feature module names + component class names with "Iris" prefix
+  - `ApiService` env URLs (`iris7.duckdns.org` → `iris1.duckdns.org`)
+  - Component copydeck text ("Iris watchtower" → "Iris — 7 FACETS")
+  - RBAC role mappings if they include "iris"
   - GitLab CI variables references
-- **Banner illustration** : if the UI renders a Mirador banner
+- **Banner illustration** : if the UI renders a Iris banner
   in-app (about page, splash), update to the new Iris visual
   `02o-iris-final.svg`.
-- **README narrative** : Mirador → Iris in user-facing copy + new
+- **README narrative** : Iris → Iris in user-facing copy + new
   framing "observability-first showcase d'un projet moderne complet
   (cloud · sécurité · IA · stack tech à jour)".
 - **Phase 4 (code rename)** : 🔴 dedicated session (138 files,
@@ -46,11 +46,11 @@ that need to surface the axis indication.
 
 ## 🟡 Stability-check ATTENTION items (2026-04-28)
 
-From `mirador-service-java/docs/audit/stability-2026-04-28-0447.md` :
+From `iris-service-java/docs/audit/stability-2026-04-28-0447.md` :
 
 - 🟢 **GitHub mirror sync** : confirmed in sync 2026-04-28 (4 commits
   pushed in this session).
-- 🟢 **README dead doc-links** : ✅ resolved 2026-04-28 ([!176](https://gitlab.com/mirador1/mirador-ui/-/merge_requests/176))
+- 🟢 **README dead doc-links** : ✅ resolved 2026-04-28 ([!176](https://gitlab.com/iris-7/iris-ui/-/merge_requests/176))
   — broken links to gitignored `docs/{compodoc,typedoc}/` replaced
   with descriptive text.
 - 🟢 **Lefthook hooks** : ✅ installed 2026-04-28 (was missing

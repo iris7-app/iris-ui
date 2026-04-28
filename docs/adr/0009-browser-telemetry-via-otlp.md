@@ -1,13 +1,13 @@
 # ADR-0009 — Browser telemetry via OpenTelemetry → OTLP → Tempo
 
-- **Status**: Accepted (Phase A landed in MR 29 commit 352106b; Phase B landed in MR 30 / mirador-service ce001f7)
+- **Status**: Accepted (Phase A landed in MR 29 commit 352106b; Phase B landed in MR 30 / iris-service ce001f7)
 - **Date**: 2026-04-19
 - **Refines**: [ADR-0006](0006-grafana-duplication.md), [ADR-0007](0007-retire-prometheus-ui-visualisations.md), [ADR-0008](0008-retire-observability-ui-in-favour-of-grafana.md)
-- **Related (backend)**: mirador-service ADR-0026 (Spring Boot scope limit)
+- **Related (backend)**: iris-service ADR-0026 (Spring Boot scope limit)
 
 ## Context
 
-Up to this point, browser-side observability in Mirador UI consisted
+Up to this point, browser-side observability in Iris UI consisted
 of:
 
 - `console.error(err)` scattered in RxJS error callbacks — lost as
@@ -73,7 +73,7 @@ half the receivers don't accept them yet.
   network tab clean.
 - No new runtime deps in Phase A — this is an in-UI refactor.
 
-### Phase B — landed in MR 30 (UI) + mirador-service ce001f7
+### Phase B — landed in MR 30 (UI) + iris-service ce001f7
 
 All four items delivered:
 
@@ -124,7 +124,7 @@ All four items delivered:
   `allowedCommonJsDependencies` to silence the Angular bailout
   warning. Revisit if protobufjs ships an ESM build (tracked
   upstream at github.com/protobufjs/protobuf.js#1762).
-- **Phase B requires a backend MR** — delivered in mirador-service
+- **Phase B requires a backend MR** — delivered in iris-service
   ce001f7. The UI side remains idempotent: `ensureOtel()` no-ops in
   dev mode and when `env.otlpUrl()` is null.
 
@@ -132,7 +132,7 @@ All four items delivered:
 
 - We adopt Grafana Alloy on the backend — switch the exporter to Alloy
   OTLP endpoint and enable logs/measurements.
-- Mirador gets real users — session tracking + replay may justify Faro
+- Iris gets real users — session tracking + replay may justify Faro
   or Sentry.
 - Bundle size breaches the 1 MB error budget — we pre-split the OTel
   SDK into a lazy chunk loaded only on feature pages with outbound

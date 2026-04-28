@@ -3,7 +3,7 @@
  *
  * Architecture:
  *   Browser → unleash-proxy (:14243 kind / :24243 prod) → Unleash server
- * No Spring Boot in the path (ADR-0026 in mirador-service). The proxy
+ * No Spring Boot in the path (ADR-0026 in iris-service). The proxy
  * authenticates the browser with a pre-shared front-end token; it in
  * turn authenticates to the Unleash admin API with a server-side token.
  *
@@ -37,7 +37,7 @@ interface UnleashProxyResponse {
  * port-forward-only — ADR-0025); the secret's role is to distinguish
  * UI traffic from other callers, not to gate access.
  */
-const FRONTEND_TOKEN = 'mirador-ui-proxy-secret';
+const FRONTEND_TOKEN = 'iris-ui-proxy-secret';
 
 @Injectable({ providedIn: 'root' })
 export class FeatureFlagService {
@@ -67,7 +67,7 @@ export class FeatureFlagService {
   /**
    * True when the current environment exposes an `unleashProxyUrl`. Use
    * this to gate flag-driven UI blocks:
-   * `@if (flagSvc.isAvailable() && flagSvc.isOn('mirador.bio.enabled'))`.
+   * `@if (flagSvc.isAvailable() && flagSvc.isOn('iris.bio.enabled'))`.
    */
   readonly isAvailable = computed(() => this.env.unleashProxyUrl() !== null);
 
@@ -115,7 +115,7 @@ export class FeatureFlagService {
     // appName + environment are standard Unleash query params identifying
     // which Unleash project/env to evaluate against. Match the
     // INIT_FRONTEND_API_TOKENS config on the unleash server.
-    const endpoint = `${url}/proxy?appName=mirador-ui&environment=development`;
+    const endpoint = `${url}/proxy?appName=iris-ui&environment=development`;
     this.http
       .get<UnleashProxyResponse>(endpoint, { headers: { Authorization: FRONTEND_TOKEN } })
       .pipe(takeUntilDestroyed(this.destroyRef))

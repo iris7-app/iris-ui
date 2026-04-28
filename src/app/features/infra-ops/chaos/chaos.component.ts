@@ -116,7 +116,7 @@ export class ChaosComponent implements OnDestroy {
     {
       name: 'Kill a backend pod',
       description:
-        'Chaos Mesh PodChaos — SIGKILL a random mirador pod for 30s. Exposes Spring Boot restart time on the golden-signals dashboard.',
+        'Chaos Mesh PodChaos — SIGKILL a random iris pod for 30s. Exposes Spring Boot restart time on the golden-signals dashboard.',
       icon: '💀',
       color: '#991b1b',
       action: () => this.triggerInfraChaos('pod-kill'),
@@ -124,7 +124,7 @@ export class ChaosComponent implements OnDestroy {
     {
       name: 'Network delay → Postgres',
       description:
-        'Chaos Mesh NetworkChaos — 200ms latency mirador → postgresql for 1 min. Surfaces as a p99 spike on the DB latency panel.',
+        'Chaos Mesh NetworkChaos — 200ms latency iris → postgresql for 1 min. Surfaces as a p99 spike on the DB latency panel.',
       icon: '🐢',
       color: '#7c2d12',
       action: () => this.triggerInfraChaos('network-delay'),
@@ -132,7 +132,7 @@ export class ChaosComponent implements OnDestroy {
     {
       name: 'CPU stress on a pod',
       description:
-        'Chaos Mesh StressChaos — saturate 70% of one vCPU on a random mirador pod for 2 min. Trips Resilience4j circuit breakers on /bio.',
+        'Chaos Mesh StressChaos — saturate 70% of one vCPU on a random iris pod for 2 min. Trips Resilience4j circuit breakers on /bio.',
       icon: '🔥',
       color: '#b45309',
       action: () => this.triggerInfraChaos('cpu-stress'),

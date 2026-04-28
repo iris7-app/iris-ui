@@ -2,7 +2,7 @@
 
 **Snapshot date** : 2026-04-25 13:30
 
-**Source backlog** : sibling `mirador-service/TASKS.md` → "🟡 UI CI debt
+**Source backlog** : sibling `iris-service/TASKS.md` → "🟡 UI CI debt
 — 2026-04-24 evening + 04:49 night work" section, opened with 4 jobs
 running with `allow_failure: true` shields on main and failing
 consistently.
@@ -13,8 +13,8 @@ consistently.
 |---|---|---|---|---|
 | `grype:scan` | `allow_failure: true` | **REMOVED** (2026-04-24, !120) | ✅ CLOSED | 5/5 green on main pipelines #2478807674, #2478827101, #2478860588, #2479025472, #2479164348 |
 | `dockle` | `allow_failure: true` | **REMOVED** (2026-04-24, !121) | ✅ CLOSED | 5/5 green since !121 (svc tarball pattern, `docker:28` + `docker save` + `dockle --input`) |
-| `sonarcloud` | `allow_failure: true` (auto) | **`when: manual` + `allow_failure: true`** ([fefb950](https://gitlab.com/mirador1/mirador-ui/-/commit/fefb950), [ADR-0011](file:///Users/benoitbesson/dev/js/mirador-ui/docs/adr/0011-sonarcloud-js-bridge-flaky.md)) | 🟢 SCOPED-OUT (not shielded) | Shield was REMOVED in wave 11 commit [3e80d81](https://gitlab.com/mirador1/mirador-ui/-/commit/3e80d81), but pipeline [#463](https://gitlab.com/mirador1/mirador-ui/-/pipelines/2479217597) failed sonarcloud with the SAME `WebSocket connection closed abnormally` pattern after 14 min. Per CLAUDE.md "Surgical fixes, not allow_failure bypasses" option (c), the parallel session's commit [fefb950](https://gitlab.com/mirador1/mirador-ui/-/commit/fefb950) flipped to `when: manual` + `allow_failure: true` — the canonical scope-out pattern (job visible + manually triggerable, but doesn't gate pipeline status). Distinct from the forbidden `when: on_success` + `allow_failure: true` shield. Same pattern as `sonar-scanner:image`. |
-| `e2e:kind` | `allow_failure: true` | **STILL IN PLACE** ([test.yml line 82](file:///Users/benoitbesson/dev/js/mirador-ui/.gitlab-ci/test.yml)) | 🔴 CANNOT CLOSE | 5/5 RED on recent main pipelines despite wave 7 (`/proc/self/cgroup` container ID fix in !125) + wave 11 (`serve -s` SPA fallback in 3e80d81). Failure mode now in Playwright specs, not docker plumbing. New dated TODO 2026-05-25. |
+| `sonarcloud` | `allow_failure: true` (auto) | **`when: manual` + `allow_failure: true`** ([fefb950](https://gitlab.com/iris-7/iris-ui/-/commit/fefb950), [ADR-0011](file:///Users/benoitbesson/dev/js/iris-ui/docs/adr/0011-sonarcloud-js-bridge-flaky.md)) | 🟢 SCOPED-OUT (not shielded) | Shield was REMOVED in wave 11 commit [3e80d81](https://gitlab.com/iris-7/iris-ui/-/commit/3e80d81), but pipeline [#463](https://gitlab.com/iris-7/iris-ui/-/pipelines/2479217597) failed sonarcloud with the SAME `WebSocket connection closed abnormally` pattern after 14 min. Per CLAUDE.md "Surgical fixes, not allow_failure bypasses" option (c), the parallel session's commit [fefb950](https://gitlab.com/iris-7/iris-ui/-/commit/fefb950) flipped to `when: manual` + `allow_failure: true` — the canonical scope-out pattern (job visible + manually triggerable, but doesn't gate pipeline status). Distinct from the forbidden `when: on_success` + `allow_failure: true` shield. Same pattern as `sonar-scanner:image`. |
+| `e2e:kind` | `allow_failure: true` | **STILL IN PLACE** ([test.yml line 82](file:///Users/benoitbesson/dev/js/iris-ui/.gitlab-ci/test.yml)) | 🔴 CANNOT CLOSE | 5/5 RED on recent main pipelines despite wave 7 (`/proc/self/cgroup` container ID fix in !125) + wave 11 (`serve -s` SPA fallback in 3e80d81). Failure mode now in Playwright specs, not docker plumbing. New dated TODO 2026-05-25. |
 
 ## Why each remaining shield can't close yet
 
@@ -32,7 +32,7 @@ fixed. The remaining failures are race conditions between :
 - dashboard's first health-poll arriving before the backend's actuator
   endpoint has all its components UP
 
-**Plan** (per refreshed TODO in [test.yml line 82](file:///Users/benoitbesson/dev/js/mirador-ui/.gitlab-ci/test.yml)) :
+**Plan** (per refreshed TODO in [test.yml line 82](file:///Users/benoitbesson/dev/js/iris-ui/.gitlab-ci/test.yml)) :
 1. Enrich `test-results` upload — capture `/actuator/health` JSON +
    backend container logs at failure time (only screenshots ship today).
 2. Add `await page.waitForResponse(/health/)` in the spec helpers so
@@ -47,18 +47,18 @@ ADR-0033 "10 green runs before flip" remains the exit criterion.
 ### `sonarcloud` — scoped-out via `when: manual` + ADR-0011
 
 The auto shield was removed in commit
-[3e80d81](https://gitlab.com/mirador1/mirador-ui/-/commit/3e80d81) (wave 11)
+[3e80d81](https://gitlab.com/iris-7/iris-ui/-/commit/3e80d81) (wave 11)
 relying on cumulative wave 7-11 fixes :
 - HOME=$CI_PROJECT_DIR/.sonar (writable scratch dir)
 - workerCount=2, maxspace=8192 (heap headroom)
 - Custom `sonar-scanner:11.5.0.2154` image with
   `chown -R scanner-cli /home/scanner-cli` at build time (wave 10
-  in [build/sonar-scanner.Dockerfile](file:///Users/benoitbesson/dev/js/mirador-ui/build/sonar-scanner.Dockerfile))
+  in [build/sonar-scanner.Dockerfile](file:///Users/benoitbesson/dev/js/iris-ui/build/sonar-scanner.Dockerfile))
 - Multi-platform image build (amd64 + arm64) so the macbook-local
   arm64 runner can pull it (commit
-  [46acc46](https://gitlab.com/mirador1/mirador-ui/-/commit/46acc46))
+  [46acc46](https://gitlab.com/iris-7/iris-ui/-/commit/46acc46))
 
-**Pipeline [#463](https://gitlab.com/mirador1/mirador-ui/-/pipelines/2479217597)
+**Pipeline [#463](https://gitlab.com/iris-7/iris-ui/-/pipelines/2479217597)
 (post-fix verification on main) FAILED** at 2026-04-25 13:20:50 with the SAME
 `java.lang.IllegalStateException: WebSocket connection closed abnormally`
 pattern, after 14 min wall-clock and processing all 157 files :
@@ -76,8 +76,8 @@ directory" error). The new crash is a SECOND, deeper root cause — likely
 JS bridge OOM by runner per-container memory cap (JVM 8GB + tree-sitter
 AST cache + ESLint SARIF + node child heap overwhelms Docker VM).
 
-**Resolution** : commit [fefb950](https://gitlab.com/mirador1/mirador-ui/-/commit/fefb950)
-+ [ADR-0011](file:///Users/benoitbesson/dev/js/mirador-ui/docs/adr/0011-sonarcloud-js-bridge-flaky.md)
+**Resolution** : commit [fefb950](https://gitlab.com/iris-7/iris-ui/-/commit/fefb950)
++ [ADR-0011](file:///Users/benoitbesson/dev/js/iris-ui/docs/adr/0011-sonarcloud-js-bridge-flaky.md)
 flipped sonarcloud to `when: manual` + `allow_failure: true` — the canonical
 GitLab "scope-out, not shield" pattern (CLAUDE.md "Surgical fixes" option c).
 The job remains visible in every MR + main pipeline ; reviewers can trigger
@@ -109,19 +109,19 @@ are NOT debt — they're intentional :
 | `trivy:scan` | Decorative shield, `--exit-code 0` always passes; coordinated flip needs `--exit-code 1` + shield-removal in same commit. | 2026-07-20 (90d) |
 | `cosign:sign` | Pre-condition unfulfilled : UI lacks a `cosign:verify` companion job (svc has one). Plan : add verify, then flip both shields. | 2026-07-20 (90d) |
 | `sonar-scanner:image` | Manual-trigger job (`when: manual`) — `allow_failure: true` here means the pipeline doesn't block when nobody clicks the button. Canonical GitLab pattern. | n/a |
-| `sonarcloud` (post-fefb950) | Same `when: manual` + `allow_failure: true` canonical scope-out. NOT a debt shield — pipelines stay structurally green without false-positive shielding ; bridge crash root cause tracked in [ADR-0011](file:///Users/benoitbesson/dev/js/mirador-ui/docs/adr/0011-sonarcloud-js-bridge-flaky.md). | exit criterion in ADR |
+| `sonarcloud` (post-fefb950) | Same `when: manual` + `allow_failure: true` canonical scope-out. NOT a debt shield — pipelines stay structurally green without false-positive shielding ; bridge crash root cause tracked in [ADR-0011](file:///Users/benoitbesson/dev/js/iris-ui/docs/adr/0011-sonarcloud-js-bridge-flaky.md). | exit criterion in ADR |
 | `deploy.yml` × 5 | All manual deploys (k3s, fly, cloud-run, aks, eks) use the same canonical "manual + allow_failure" pattern. | n/a |
 
 ## Verification commands
 
 ```bash
 # Confirm grype + dockle stay green on the next main pipeline
-glab ci get -R mirador1/mirador-ui --pipeline-id <id> | grep -E "(grype|dockle):"
+glab ci get -R iris-7/iris-ui --pipeline-id <id> | grep -E "(grype|dockle):"
 
 # Watch e2e:kind failure mode
-glab ci trace -R mirador1/mirador-ui <e2e:kind-job-id> | tail -100
+glab ci trace -R iris-7/iris-ui <e2e:kind-job-id> | tail -100
 
 # Confirm sonarcloud post-shield removal
-glab api "projects/mirador1%2Fmirador-ui/pipelines/<id>/jobs?per_page=50" \
+glab api "projects/iris-7%2Firis-ui/pipelines/<id>/jobs?per_page=50" \
   | python3 -c "import json,sys; [print(f\"{j['name']:20s} {j['status']:10s} allow_failure={j.get('allow_failure')}\") for j in json.load(sys.stdin) if j['name']=='sonarcloud']"
 ```

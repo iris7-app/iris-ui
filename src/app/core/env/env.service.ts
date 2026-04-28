@@ -5,7 +5,7 @@
  * calls and deep-links in the UI resolve their target URL through this
  * service's computed signals so the same UI bundle works against both the
  * docker-compose stack (dev) and the GKE cluster reached through
- * `bin/pf-prod.sh` tunnels (per ADR-0025 in mirador-service).
+ * `bin/pf-prod.sh` tunnels (per ADR-0025 in iris-service).
  *
  * The selected environment is persisted in localStorage and restored on
  * reload. Signal-based, so every consumer recomputes automatically without
@@ -50,7 +50,7 @@ export interface Environment {
    * Unleash front-end proxy (`unleash-proxy` Deployment in the `infra`
    * namespace of the K8s clusters). The browser calls this with a
    * pre-shared front-end token; the proxy handles the Unleash admin API
-   * on the backend side. Per mirador-service ADR-0026, Spring Boot is not
+   * on the backend side. Per iris-service ADR-0026, Spring Boot is not
    * on this path.
    */
   unleashProxyUrl?: string;
@@ -66,11 +66,11 @@ export interface Environment {
 
   /**
    * pgweb HTTP ↔ Postgres bridge. The Database page's SQL Explorer + health
-   * checks call this directly (no BFF — see mirador-service ADR-0026).
+   * checks call this directly (no BFF — see iris-service ADR-0026).
    * Compose defines a `pgweb-local` container on 8081 pointing at db:5432.
    * Prod tunnel uses a second `pgweb-prod` container on 8082 pointing at
    * host.docker.internal:15432 (the port-forwarded cluster Postgres).
-   * Start the prod one with `bin/pgweb-prod-up.sh` in mirador-service.
+   * Start the prod one with `bin/pgweb-prod-up.sh` in iris-service.
    */
   pgwebUrl?: string;
 
@@ -99,7 +99,7 @@ export interface Environment {
  * decade, so all three can coexist on the laptop simultaneously.
  *
  * Port map and rationale:
- * <https://gitlab.com/mirador1/mirador-service/-/blob/main/docs/architecture/environments-and-flows.md>
+ * <https://gitlab.com/iris-7/iris-service/-/blob/main/docs/architecture/environments-and-flows.md>
  */
 const ENVIRONMENTS: Environment[] = [
   {
@@ -121,7 +121,7 @@ const ENVIRONMENTS: Environment[] = [
   {
     name: 'Kind',
     // Kind = local Kubernetes-in-Docker cluster. Tunnels opened by
-    // `bin/pf-kind.sh --daemon` in the mirador-service checkout.
+    // `bin/pf-kind.sh --daemon` in the iris-service checkout.
     baseUrl: 'http://localhost:18080',
     grafanaUrl: 'http://localhost:13000',
     keycloakUrl: 'http://localhost:19090',

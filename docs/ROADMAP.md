@@ -1,4 +1,4 @@
-# Mirador — Roadmap (tâches non-validées)
+# Iris — Roadmap (tâches non-validées)
 
 > **Statut** — Ce fichier contient des propositions **pas encore validées**
 > par l'utilisateur. Rien n'est committé, rien n'est en cours. Il sert
@@ -21,7 +21,7 @@
 - `[ ]` — proposition ouverte, pas encore arbitrée
 - `[~]` — arbitrage en cours (jamais persisté ici ; passe immédiatement en TASKS.md)
 - Effort : heures de dev pour une première version livrable et testée localement
-- Repo : `ui` (mirador-ui), `svc` (mirador-service), `both` (change les deux)
+- Repo : `ui` (iris-ui), `svc` (iris-service), `both` (change les deux)
 
 ---
 
@@ -33,7 +33,7 @@ Argo Rollouts la protège en prod à chaque déploiement.
 
 ### 1. `[ ]` SLO + error budget via Sloth — `svc` — **2 h**
 
-**Ce qu'on ajoute.** Un fichier `slo/mirador.yml` en YAML Sloth, un job CI
+**Ce qu'on ajoute.** Un fichier `slo/iris.yml` en YAML Sloth, un job CI
 qui fait `sloth generate` pour produire les `PrometheusRule` correspondants,
 commit des règles générées, Mimir les ingère automatiquement.
 
@@ -67,7 +67,7 @@ trafic réel. Acceptable : c'est le même coût de maintenance qu'une doc
 vivante.
 
 **Livrable attendu.**
-- `slo/mirador.yml` — 1 à 3 SLOs (availability, latency, éventuellement
+- `slo/iris.yml` — 1 à 3 SLOs (availability, latency, éventuellement
   error-rate `customer.enrich` Kafka request-reply spécifique)
 - `PrometheusRule` généré + commité (reproducibilité)
 - Job CI `sloth:lint` qui échoue si quelqu'un modifie la règle à la main
@@ -79,8 +79,8 @@ vivante.
 ### 2. `[ ]` Playwright E2E dans kind-in-CI — `ui` (+ `svc` côté job CI) — **3 h**
 
 **Ce qu'on ajoute.** Une suite Playwright (3-5 specs) lancée dans le stage
-`k8s` existant de mirador-service, après le `kubectl apply` sur kind. Un
-`kubectl port-forward svc/mirador-ui 4200:80 &` expose l'UI, Playwright
+`k8s` existant de iris-service, après le `kubectl apply` sur kind. Un
+`kubectl port-forward svc/iris-ui 4200:80 &` expose l'UI, Playwright
 attaque `http://localhost:4200`, échec → screenshot + vidéo en artefact
 GitLab.
 
@@ -133,8 +133,8 @@ explicites (`expect(locator).toContainText()` pas de `setTimeout`). Budget
 
 ### 3. `[ ]` Argo Rollouts AnalysisTemplate — `svc` — **2 h**
 
-**Ce qu'on ajoute.** Remplacement de `Deployment/mirador` par un
-`Rollout/mirador` (CRD Argo Rollouts, déjà installé côté cluster selon
+**Ce qu'on ajoute.** Remplacement de `Deployment/iris` par un
+`Rollout/iris` (CRD Argo Rollouts, déjà installé côté cluster selon
 l'historique). Définition d'un `AnalysisTemplate` qui interroge Mimir sur
 le taux de succès HTTP pendant la progression du rollout. Auto-rollback si
 la métrique sort du seuil.
@@ -246,7 +246,7 @@ portfolio sans handicap déclaré dans l'audience.
 
 ### 8. `[ ]` Cosign-verify à l'admission — `svc` — **1 h**
 
-Les images mirador-service sont déjà signées cosign (historique mentionne
+Les images iris-service sont déjà signées cosign (historique mentionne
 "Docker image security: SBOM, Grype, dockle, cosign"). Ce qui manque :
 **la vérification à l'admission**. Un Kyverno `verifyImages` rule qui
 refuse tout pod dont l'image n'a pas de signature cosign valide
@@ -281,8 +281,8 @@ pour la traçabilité :
   atteint 100 % du cap (€10/mois par défaut), la Cloud Function
   `budget-kill` supprime automatiquement le cluster GKE via Pub/Sub.
   Implémentation complète dans `deploy/cloud-functions/budget-kill/`
-  côté mirador-service, documenté dans
-  [`docs/ops/cost-control.md`](https://gitlab.com/mirador1/mirador-service/-/blob/main/docs/ops/cost-control.md).
+  côté iris-service, documenté dans
+  [`docs/ops/cost-control.md`](https://gitlab.com/iris-7/iris-service/-/blob/main/docs/ops/cost-control.md).
   Était en "Roadmap — future" dans la doc originale ; passé en live
   quand l'utilisateur a demandé de blinder le budget contre la dérive.
 
@@ -294,7 +294,7 @@ au reviewer qu'on a discriminé.
 
 ### Service mesh (Istio / Linkerd)
 
-Déjà décliné par **ADR-0027** côté mirador-service. Raison : le sidecar
+Déjà décliné par **ADR-0027** côté iris-service. Raison : le sidecar
 envoy sur GKE Autopilot facture +70 % de la baseline (chaque sidecar compte
 comme un pod billable). Sur un budget €2/mois (ADR-0022), ça passe à €6+.
 Les bénéfices (mTLS intra-cluster, traffic split canary) sont couverts
@@ -304,7 +304,7 @@ Rollouts replica-count (Tier 1 #3).
 ### Backstage / IDP interne
 
 Backstage met 2-3 semaines à livrer la première valeur et nécessite au
-moins 5 services pour être utile. Mirador a **un seul service backend +
+moins 5 services pour être utile. Iris a **un seul service backend +
 une UI** : Backstage ajouterait une page qui dit "vous avez un service".
 
 ### SLSA level 3 provenance
@@ -317,7 +317,7 @@ l'auteur seul**, L2 (le niveau actuel, SBOM + cosign) est suffisant.
 
 ### Kubecost / FinOps avancé
 
-La facture GCP Mirador est de €2/mois en mode ephemeral (ADR-0022). Outils
+La facture GCP Iris est de €2/mois en mode ephemeral (ADR-0022). Outils
 FinOps calibrés pour €50k+/mois. **Le gain d'optimisation serait sous le
 bruit**. Remis au jour où un coût à 4 chiffres apparaît.
 
@@ -330,7 +330,7 @@ valeur mesurable.
 
 ### Operator Spring Boot custom
 
-Un operator gère des **CRDs métier** (ex. `kind: KafkaTopic`). Mirador a
+Un operator gère des **CRDs métier** (ex. `kind: KafkaTopic`). Iris a
 zéro besoin métier qui dépasse ce que Kustomize + Helm couvrent déjà.
 Écrire un operator ici = sur-ingénierie affichée.
 

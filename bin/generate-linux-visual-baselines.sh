@@ -10,7 +10,7 @@
 # baselines CI expects, which we commit alongside the macOS ones.
 #
 # Usage:
-#   cd mirador-ui
+#   cd iris-ui
 #   # Backend on :8080 (./run.sh app in service repo) + UI on :4200
 #   # *bound to 0.0.0.0* so the container can reach it:
 #   #   npx ng serve --host 0.0.0.0
@@ -39,7 +39,7 @@
 # bootstraps, the visual specs see an empty `<app-root>` and time
 # out. Workarounds (try in this order):
 #   1. Build a static UI bundle first (`npm run build`) and serve it
-#      via `npx http-server dist/mirador-ui/browser -p 4200`. No HMR
+#      via `npx http-server dist/iris-ui/browser -p 4200`. No HMR
 #      socket → no localhost-baked URL → the container is happy.
 #   2. Or: run this script on a Linux dev box where `--network=host`
 #      means localhost actually IS the host (Mac Docker Desktop runs

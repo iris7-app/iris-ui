@@ -1,12 +1,12 @@
 # =============================================================================
 # Deployment — Angular frontend served by Nginx
 #
-# Built by the mirador-ui GitLab CI pipeline; image pushed to the GitLab
-# Container Registry under registry.gitlab.com/mirador1/mirador-ui:<sha>.
+# Built by the iris-ui GitLab CI pipeline; image pushed to the GitLab
+# Container Registry under registry.gitlab.com/iris-7/iris-ui:<sha>.
 #
 # envsubst placeholders:
-#   ${IMAGE_REGISTRY}  — CI_REGISTRY_IMAGE from mirador-ui pipeline (no /frontend subpath)
-#   ${UI_IMAGE_TAG}    — CI_COMMIT_SHA from mirador-ui pipeline
+#   ${IMAGE_REGISTRY}  — CI_REGISTRY_IMAGE from iris-ui pipeline (no /frontend subpath)
+#   ${UI_IMAGE_TAG}    — CI_COMMIT_SHA from iris-ui pipeline
 # =============================================================================
 apiVersion: apps/v1
 kind: Deployment
@@ -39,7 +39,7 @@ spec:
         - name: gitlab-registry
       containers:
         - name: customer-ui
-          # IMAGE_REGISTRY = registry.gitlab.com/mirador1/mirador-ui (no /frontend subpath)
+          # IMAGE_REGISTRY = registry.gitlab.com/iris-7/iris-ui (no /frontend subpath)
           image: "${IMAGE_REGISTRY}:${UI_IMAGE_TAG}"
           imagePullPolicy: Always
           ports:

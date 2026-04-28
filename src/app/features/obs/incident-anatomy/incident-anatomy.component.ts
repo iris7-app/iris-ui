@@ -4,7 +4,7 @@
  * A companion page to /find-the-bug. Where find-the-bug lets a visitor
  * INTERACT with one puzzle at a time, this page tells a single end-to-end
  * STORY: "here is what a real incident looks like, from T+0 alert fire
- * through T+5 recovery confirmed, using Mirador's actual observability
+ * through T+5 recovery confirmed, using Iris's actual observability
  * tooling". Read, don't click.
  *
  * Timeline chosen: the Ollama-circuit-breaker outage pattern (most
@@ -55,26 +55,26 @@ export class IncidentAnatomyComponent {
     {
       t: 'T+0 s',
       icon: '🔔',
-      title: 'Alert fires — MiradorHighErrorRate',
+      title: 'Alert fires — IrisHighErrorRate',
       observation:
-        'Prometheus evaluates mirador:http_error_ratio:5m every 30 s. At T+0 the ratio crosses 5 % and stays above for 5 minutes — the alert transitions from PENDING to FIRING in the Prometheus Alerts UI. Per ADR-0048 there is no Alertmanager routing (single-replica demo), so nothing pages — the operator sees it only on the dashboard or by checking Alerts manually.',
+        'Prometheus evaluates iris:http_error_ratio:5m every 30 s. At T+0 the ratio crosses 5 % and stays above for 5 minutes — the alert transitions from PENDING to FIRING in the Prometheus Alerts UI. Per ADR-0048 there is no Alertmanager routing (single-replica demo), so nothing pages — the operator sees it only on the dashboard or by checking Alerts manually.',
       action:
         'Open Prometheus Alerts tab (or the Grafana Alerting view). Click the firing alert. The annotation.summary surfaces on hover, the runbook_url is a one-click jump to docs/ops/runbooks/.',
       snippet: {
-        label: 'mirador-alerts.yaml',
-        code: `- alert: MiradorHighErrorRate
-  expr: mirador:http_error_ratio:5m > 0.05
+        label: 'iris-alerts.yaml',
+        code: `- alert: IrisHighErrorRate
+  expr: iris:http_error_ratio:5m > 0.05
   for: 5m
   labels:
     severity: critical
   annotations:
-    summary: 'Mirador 5xx error rate >5% for 5 min'
+    summary: 'Iris 5xx error rate >5% for 5 min'
     runbook_url: docs/ops/runbooks/high-error-rate.md`,
       },
       links: [
         {
           label: 'ADR-0048 (why no pager)',
-          url: 'https://gitlab.com/mirador1/mirador-service/-/blob/main/docs/adr/0048-prometheus-alert-rules-evaluate-but-dont-route.md',
+          url: 'https://gitlab.com/iris-7/iris-service/-/blob/main/docs/adr/0048-prometheus-alert-rules-evaluate-but-dont-route.md',
         },
       ],
     },
@@ -83,13 +83,13 @@ export class IncidentAnatomyComponent {
       icon: '📊',
       title: 'Operator opens the RED dashboard',
       observation:
-        'Grafana dashboard "Mirador RED" panel "Error rate by URI" shows the hot endpoint: /customers/{id}/bio is dominating the red bars. Other URIs are healthy. The break-down eliminates "everything is broken" theories immediately.',
+        'Grafana dashboard "Iris RED" panel "Error rate by URI" shows the hot endpoint: /customers/{id}/bio is dominating the red bars. Other URIs are healthy. The break-down eliminates "everything is broken" theories immediately.',
       action:
         "Click an error-rate spike on the Grafana chart. ADR-0048's Phase 2 O1 wired exemplars, so the click surfaces a trace_id — clicking it jumps straight to the Tempo span for one failing request. The span tree shows the HTTP 503 came from BioService → OllamaClient.",
       links: [
         {
           label: 'Phase 2 O1 exemplars commit',
-          url: 'https://gitlab.com/mirador1/mirador-service/-/commit/75c9049',
+          url: 'https://gitlab.com/iris-7/iris-service/-/commit/75c9049',
         },
       ],
     },
@@ -121,9 +121,9 @@ export class IncidentAnatomyComponent {
       icon: '🔍',
       title: 'Find the upstream — Ollama is the bottleneck',
       observation:
-        "Per the runbook's diagnostic commands: `docker logs mirador-ollama-1` shows repeated `model load timeout`. The LLM is taking >30 s per request; Resilience4j's 10-failure-in-rolling-window threshold is met and the circuit opens. Mirador's own logs show the fallback kicking in — the customer-facing response is \"Bio temporarily unavailable.\", not a 500.",
+        "Per the runbook's diagnostic commands: `docker logs iris-ollama-1` shows repeated `model load timeout`. The LLM is taking >30 s per request; Resilience4j's 10-failure-in-rolling-window threshold is met and the circuit opens. Iris's own logs show the fallback kicking in — the customer-facing response is \"Bio temporarily unavailable.\", not a 500.",
       action:
-        'Check Pyroscope for an off-CPU profile during the spike. The frames show most time parked in OllamaClient.blockingCall — confirming "Mirador is healthy, upstream is slow" rather than "Mirador has a bug".',
+        'Check Pyroscope for an off-CPU profile during the spike. The frames show most time parked in OllamaClient.blockingCall — confirming "Iris is healthy, upstream is slow" rather than "Iris has a bug".',
     },
     {
       t: 'T+3 m',
@@ -132,14 +132,14 @@ export class IncidentAnatomyComponent {
       observation:
         'The runbook\'s "Fix that worked last time" section lists two options: (a) restart Ollama to evict the stuck model, (b) wait 30 s for the circuit to HALF_OPEN and test with one canary probe. Option (a) is destructive but fast — pick it.',
       action:
-        '`docker restart mirador-ollama-1` — 15 s to pull model weights back into memory. Meanwhile the circuit stays OPEN; clients keep receiving the fallback string with no user-visible 5xx.',
+        '`docker restart iris-ollama-1` — 15 s to pull model weights back into memory. Meanwhile the circuit stays OPEN; clients keep receiving the fallback string with no user-visible 5xx.',
     },
     {
       t: 'T+5 m',
       icon: '✅',
       title: 'Recovery confirmed',
       observation:
-        'bioCircuit.state = HALF_OPEN at T+4 m (30 s after the last failure). One probe call succeeds → state transitions to CLOSED. mirador:http_error_ratio:5m drops below 5 % for 5 consecutive minutes; the alert transitions from FIRING back to INACTIVE.',
+        'bioCircuit.state = HALF_OPEN at T+4 m (30 s after the last failure). One probe call succeeds → state transitions to CLOSED. iris:http_error_ratio:5m drops below 5 % for 5 consecutive minutes; the alert transitions from FIRING back to INACTIVE.',
       action:
         'Write the post-mortem (no actual outage — the fallback meant zero user impact) noting Ollama took 90 s to recover. Suggest a Kubernetes livenessProbe on the Ollama pod as a follow-up so the circuit breaker + pod restart work together next time.',
     },

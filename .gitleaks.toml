@@ -1,5 +1,5 @@
 # =============================================================================
-# gitleaks config — secret scanner for mirador-ui.
+# gitleaks config — secret scanner for iris-ui.
 #
 # Runs on:
 #   - pre-commit (via lefthook) — scans staged changes
@@ -11,11 +11,11 @@
 #     "Rules[0].AllowList expected a map, got 'slice'".
 #   - A finding is ignored if it matches EITHER `paths` OR `regexes`.
 #
-# Same shape as the mirador-service config; kept separate so each repo
+# Same shape as the iris-service config; kept separate so each repo
 # can have its own allowlist.
 # =============================================================================
 
-title = "Mirador UI — gitleaks config"
+title = "Iris UI — gitleaks config"
 
 [extend]
 useDefault = true

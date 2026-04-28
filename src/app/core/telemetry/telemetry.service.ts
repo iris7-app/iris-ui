@@ -8,7 +8,7 @@
  * happened instead of a blank DevTools console.
  *
  * In Phase A the sink is local-only: a bounded signal history + the
- * existing `ActivityService` timeline. In Phase B (mirador-service
+ * existing `ActivityService` timeline. In Phase B (iris-service
  * CORS proxy :4319) each `error()` / `warn()` call also emits a span
  * event to Tempo. Call sites don't change.
  */
@@ -106,7 +106,7 @@ export class TelemetryService {
     this.provider?.shutdown().catch(() => undefined);
 
     const resource = resourceFromAttributes({
-      [ATTR_SERVICE_NAME]: 'mirador-ui',
+      [ATTR_SERVICE_NAME]: 'iris-ui',
       [ATTR_SERVICE_VERSION]: '0.0.0',
       'deployment.environment': this.env.current().name.toLowerCase(),
       // Informational — helps diff spans across env switches in one session.
@@ -144,7 +144,7 @@ export class TelemetryService {
 
     this.provider = provider;
     this.lastOtlpUrl = otlpUrl;
-    this.tracer = trace.getTracer('mirador-ui');
+    this.tracer = trace.getTracer('iris-ui');
     this.info('otel.init', { otlpUrl, env: this.env.current().name });
   }
 

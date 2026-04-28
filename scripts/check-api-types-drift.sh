@@ -24,7 +24,7 @@ REPO_ROOT="$(cd -P "$SCRIPT_DIR/.." && pwd)"
 # parser inside gen-api-types.sh. `mktemp -t foo.ts` on macOS appends a random
 # suffix AFTER .ts (→ foo.ts.XXXXX), which breaks prettier's extension-based
 # parser detection. A real .ts file inside a tempdir avoids the issue.
-TMPDIR_="$(mktemp -d -t mirador-api-drift-XXXXXX)"
+TMPDIR_="$(mktemp -d -t iris-api-drift-XXXXXX)"
 trap 'rm -rf "$TMPDIR_"' EXIT
 TMPFILE="$TMPDIR_/generated.types.ts"
 

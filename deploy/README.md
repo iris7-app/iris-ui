@@ -14,18 +14,18 @@ or by the runtime container; none of it affects local dev (which runs via
 
 ## Why group under `deploy/`?
 
-Follows the same convention as `mirador-service`: every top-level folder
+Follows the same convention as `iris-service`: every top-level folder
 owns ONE concern — `src/` for source, `public/` for static assets,
 `deploy/` for production deployment, `config/` for tool configs,
 `build/` for the Dockerfile. When more deployment targets land (Fly.io
 manifests, Azure static-site configs), they sit as siblings under
 `deploy/`.
 
-## Relationship to `mirador-service/deploy/`
+## Relationship to `iris-service/deploy/`
 
 Both repos contribute K8s manifests to the **same cluster, same
 namespace (`app`)**. The backend owns the shared Ingress
-(`mirador-service/deploy/kubernetes/base/ingress.yaml`) — this repo only
+(`iris-service/deploy/kubernetes/base/ingress.yaml`) — this repo only
 ships frontend-specific Deployment + Service.
 
 ## CI wiring
@@ -44,4 +44,4 @@ ships frontend-specific Deployment + Service.
 - **Dockerfile** → `build/`
 - **Tool configs** (Sonar, Prettier, TypeDoc) → `config/`
 - **Cloud infrastructure** (VPC, GKE cluster) — lives only in
-  `mirador-service/deploy/terraform/`. The frontend doesn't own any infra.
+  `iris-service/deploy/terraform/`. The frontend doesn't own any infra.

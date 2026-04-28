@@ -30,8 +30,8 @@ describe('PipelinesService', () => {
       // Pinned: slugs must be URL-encoded (`%2F` for `/`) so they paste
       // directly into the GitLab REST path. Un-encoding silently breaks
       // the proxy (404s with no obvious cause).
-      expect(PROJECTS.ui).toBe('mirador1%2Fmirador-ui');
-      expect(PROJECTS.service).toBe('mirador1%2Fmirador-service');
+      expect(PROJECTS.ui).toBe('iris-7%2Firis-ui');
+      expect(PROJECTS.service).toBe('iris-7%2Firis-service');
     });
   });
 
@@ -51,7 +51,7 @@ describe('PipelinesService', () => {
       service.list('ui').subscribe();
 
       const req = httpMock.expectOne(
-        'http://localhost:3333/gitlab/projects/mirador1%2Fmirador-ui/pipelines?per_page=20&order_by=id&sort=desc',
+        'http://localhost:3333/gitlab/projects/iris-7%2Firis-ui/pipelines?per_page=20&order_by=id&sort=desc',
       );
       expect(req.request.method).toBe('GET');
       req.flush([]);
@@ -61,8 +61,7 @@ describe('PipelinesService', () => {
       service.list('service').subscribe();
 
       const req = httpMock.expectOne(
-        (r) =>
-          r.url.includes('mirador1%2Fmirador-service/pipelines') && r.url.includes('per_page=20'),
+        (r) => r.url.includes('iris-7%2Firis-service/pipelines') && r.url.includes('per_page=20'),
       );
       req.flush([]);
     });
@@ -102,7 +101,7 @@ describe('PipelinesService', () => {
         status: 'success',
         ref: 'main',
         sha: 'abc123def',
-        web_url: 'https://gitlab.com/mirador1/mirador-ui/-/pipelines/12345',
+        web_url: 'https://gitlab.com/iris-7/iris-ui/-/pipelines/12345',
         created_at: '2026-04-23T05:00:00Z',
         updated_at: '2026-04-23T05:15:00Z',
         started_at: '2026-04-23T05:00:30Z',
@@ -125,7 +124,7 @@ describe('PipelinesService', () => {
       service.jobs('ui', 12345).subscribe();
 
       const req = httpMock.expectOne(
-        'http://localhost:3333/gitlab/projects/mirador1%2Fmirador-ui/pipelines/12345/jobs?per_page=100',
+        'http://localhost:3333/gitlab/projects/iris-7%2Firis-ui/pipelines/12345/jobs?per_page=100',
       );
       expect(req.request.method).toBe('GET');
       req.flush([]);

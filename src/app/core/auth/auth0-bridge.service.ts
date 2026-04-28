@@ -29,7 +29,7 @@ export class Auth0BridgeService {
   constructor() {
     // When Auth0 reports authenticated, get the JWT access token and feed it into
     // AuthService so the existing authInterceptor attaches it to API requests.
-    // getAccessTokenSilently() returns a signed JWT when the 'https://mirador-api'
+    // getAccessTokenSilently() returns a signed JWT when the 'https://iris-api'
     // audience is configured in Auth0 (Applications → APIs).
     //
     // catchError absorbs token-refresh failures (Auth0 unreachable, session expired)

@@ -30,7 +30,7 @@ describe('TourOverlayComponent', () => {
 
   beforeEach(() => {
     try {
-      localStorage.removeItem('mirador:tour:seen');
+      localStorage.removeItem('iris:tour:seen');
     } catch {
       // Non-jsdom env — service degrades to in-memory. Fine for tests.
     }

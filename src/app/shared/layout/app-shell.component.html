@@ -9,7 +9,7 @@
       >
         {{ sidebarCollapsed() ? '☰' : '‹' }}
       </button>
-      <!-- Mirador favicon icon -->
+      <!-- Iris favicon icon -->
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 32 32"
@@ -39,7 +39,7 @@
           opacity="0.5"
         />
       </svg>
-      <h1>Mirador</h1>
+      <h1>Iris</h1>
     </div>
 
     <div class="topbar-actions">
@@ -48,7 +48,7 @@
           Environment selector. `Local` = compose defaults (8080, 3000, …);
           `Prod tunnel` = GKE reached through bin/pf-prod.sh (18080, 13000, …).
           See docs/architecture/env-service.md in this repo and
-          mirador-service/docs/adr/0025-ui-local-only-no-public-prod-ingress.md.
+          iris-service/docs/adr/0025-ui-local-only-no-public-prod-ingress.md.
           Selection persists in localStorage; signals downstream recompute.
         -->
         <select

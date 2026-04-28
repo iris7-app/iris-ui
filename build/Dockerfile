@@ -1,7 +1,7 @@
 # =============================================================================
 # Multi-stage Dockerfile — Angular SPA served by Nginx.
 #
-# Lives under build/ for parity with the sibling mirador-service repo.
+# Lives under build/ for parity with the sibling iris-service repo.
 # Built from the repo root with:
 #   docker build -f build/Dockerfile .
 #
@@ -34,16 +34,16 @@ RUN npx ng build --configuration production
 FROM nginx:1.27-alpine AS runtime
 
 # OCI labels — traceability for cosign, Trivy, GitLab registry UI.
-LABEL org.opencontainers.image.title="mirador-ui" \
-      org.opencontainers.image.description="Mirador Angular 21 SPA" \
-      org.opencontainers.image.source="https://gitlab.com/mirador1/mirador-ui" \
+LABEL org.opencontainers.image.title="iris-ui" \
+      org.opencontainers.image.description="Iris Angular 21 SPA" \
+      org.opencontainers.image.source="https://gitlab.com/iris-7/iris-ui" \
       org.opencontainers.image.licenses="Proprietary" \
-      org.opencontainers.image.vendor="mirador1" \
+      org.opencontainers.image.vendor="iris-7" \
       org.opencontainers.image.base.name="nginx:1.27-alpine"
 
 # Copy the compiled Angular app into the Nginx web root.
 # Ownership is left to the nginx default user (already non-root in :alpine).
-COPY --from=builder /app/dist/mirador-ui/browser /usr/share/nginx/html
+COPY --from=builder /app/dist/iris-ui/browser /usr/share/nginx/html
 
 # Replace the default Nginx config with our SPA-aware config.
 # Source lives under deploy/ (build context is the repo root).

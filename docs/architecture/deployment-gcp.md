@@ -4,10 +4,10 @@ Production deployment on GKE Autopilot with Cloud SQL, Memorystore, Managed Kafk
 
 ## Live project links
 
-- [GCP Console — project mirador](https://console.cloud.google.com/home/dashboard?project=project-8d6ea68c-33ac-412b-8aa)
-- [GKE Cluster — mirador-prod (europe-west1)](https://console.cloud.google.com/kubernetes/clusters/details/europe-west1/mirador-prod/details?project=project-8d6ea68c-33ac-412b-8aa)
-- [Application — mirador1.duckdns.org](http://mirador1.duckdns.org)
-- [GitLab — mirador1 group](https://gitlab.com/mirador1)
+- [GCP Console — project iris](https://console.cloud.google.com/home/dashboard?project=project-8d6ea68c-33ac-412b-8aa)
+- [GKE Cluster — iris-prod (europe-west1)](https://console.cloud.google.com/kubernetes/clusters/details/europe-west1/iris-prod/details?project=project-8d6ea68c-33ac-412b-8aa)
+- [Application — iris7.duckdns.org](http://iris7.duckdns.org)
+- [GitLab — iris-7 group](https://gitlab.com/iris-7)
 
 The production environment runs on **GKE Autopilot** — Google's fully managed Kubernetes offering where node provisioning, scaling, and patching are handled by GCP. All stateful infrastructure (database, cache, message broker) is **managed by Google**, eliminating operational overhead for maintenance and failover.
 
@@ -30,7 +30,7 @@ Managed services delegate scaling, patching, backups, and failover to the cloud 
 
 ## Database authentication — Cloud SQL Auth Proxy
 
-The backend pod connects to PostgreSQL via a **Cloud SQL Auth Proxy sidecar**. The proxy uses **Workload Identity** to authenticate with GCP (`mirador-sql-proxy` GCP service account) — no passwords are stored in the pod.
+The backend pod connects to PostgreSQL via a **Cloud SQL Auth Proxy sidecar**. The proxy uses **Workload Identity** to authenticate with GCP (`iris-sql-proxy` GCP service account) — no passwords are stored in the pod.
 
 ```
 Backend pod:
@@ -61,10 +61,10 @@ The Spring Boot backend validates JWT tokens issued by **Auth0**. The Angular fr
 
 | Config key | Value (example) | Notes |
 | --- | --- | --- |
-| `AUTH0_DOMAIN` | `mirador.eu.auth0.com` | Issuer URI = `https://<domain>/` |
+| `AUTH0_DOMAIN` | `iris.eu.auth0.com` | Issuer URI = `https://<domain>/` |
 | `AUTH0_CLIENT_ID` | (from Auth0 app settings) | Angular SPA client |
 | `AUTH0_CLIENT_SECRET` | (from Auth0 app settings) | Backend resource server validation |
-| `AUTH0_AUDIENCE` | `https://mirador-api` | API identifier registered in Auth0 |
+| `AUTH0_AUDIENCE` | `https://iris-api` | API identifier registered in Auth0 |
 
 Auth0 replaces the local `Keycloak :9090` container in production — the same Spring Security OAuth2 Resource Server configuration works with both, only the issuer URI changes.
 
@@ -107,18 +107,18 @@ Pushing to `main` triggers the `deploy:gke` job automatically. The `terraform-ap
 
 ## Custom domain + HTTPS
 
-The application is reachable at [mirador1.duckdns.org](http://mirador1.duckdns.org) via [DuckDNS](https://www.duckdns.org) — a free dynamic DNS service. The A record points to the GKE ingress IP `34.52.233.183`. No annual fee, no credit card.
+The application is reachable at [iris7.duckdns.org](http://iris7.duckdns.org) via [DuckDNS](https://www.duckdns.org) — a free dynamic DNS service. The A record points to the GKE ingress IP `34.52.233.183`. No annual fee, no credit card.
 
-HTTPS will be enabled automatically once cert-manager is installed on the cluster — it requests a Let's Encrypt certificate for `mirador1.duckdns.org` on first deploy. The `K8S_HOST` GitLab CI variable is already set to `mirador1.duckdns.org`.
+HTTPS will be enabled automatically once cert-manager is installed on the cluster — it requests a Let's Encrypt certificate for `iris7.duckdns.org` on first deploy. The `K8S_HOST` GitLab CI variable is already set to `iris7.duckdns.org`.
 
 ```bash
 # DuckDNS setup (already done)
-# 1. Account at duckdns.org → subdomain "mirador1" created
-# 2. A record: mirador1.duckdns.org → 34.52.233.183
-# 3. GitLab CI group variable: K8S_HOST=mirador1.duckdns.org
+# 1. Account at duckdns.org → subdomain "iris-7" created
+# 2. A record: iris7.duckdns.org → 34.52.233.183
+# 3. GitLab CI group variable: K8S_HOST=iris7.duckdns.org
 
 # To update the IP if it changes (e.g. after cluster recreation):
-curl "https://www.duckdns.org/update?domains=mirador1&token=<TOKEN>&ip=<NEW_IP>"
+curl "https://www.duckdns.org/update?domains=iris-7&token=<TOKEN>&ip=<NEW_IP>"
 ```
 
 ## Deployment checklist

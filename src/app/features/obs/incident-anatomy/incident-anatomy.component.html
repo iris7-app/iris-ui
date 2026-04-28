@@ -3,9 +3,9 @@
     <h1>🎬 Anatomy of an incident</h1>
     <p class="anatomy-subtitle">
       A minute-by-minute walkthrough of a real incident pattern — Ollama LLM slowness cascades into
-      the circuit breaker — using Mirador's actual alerts, runbooks, traces, and chaos tools. Read
-      it top-to-bottom for the shape of a "symptom → diagnosis → fix → verify" loop; no clicks
-      needed. For hands-on,
+      the circuit breaker — using Iris's actual alerts, runbooks, traces, and chaos tools. Read it
+      top-to-bottom for the shape of a "symptom → diagnosis → fix → verify" loop; no clicks needed.
+      For hands-on,
       <a routerLink="/find-the-bug">try /find-the-bug</a>.
     </p>
   </header>
@@ -57,16 +57,16 @@
       <li>
         The alert is in
         <a
-          href="https://gitlab.com/mirador1/mirador-service/-/blob/main/deploy/kubernetes/base/observability-prom/mirador-alerts.yaml"
+          href="https://gitlab.com/iris-7/iris-service/-/blob/main/deploy/kubernetes/base/observability-prom/iris-alerts.yaml"
           target="_blank"
           rel="noopener noreferrer"
-          >deploy/kubernetes/base/observability-prom/mirador-alerts.yaml ↗</a
+          >deploy/kubernetes/base/observability-prom/iris-alerts.yaml ↗</a
         >
       </li>
       <li>
         The runbooks live under
         <a
-          href="https://gitlab.com/mirador1/mirador-service/-/tree/main/docs/ops/runbooks"
+          href="https://gitlab.com/iris-7/iris-service/-/tree/main/docs/ops/runbooks"
           target="_blank"
           rel="noopener noreferrer"
           >docs/ops/runbooks/ ↗</a

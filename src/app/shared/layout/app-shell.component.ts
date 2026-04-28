@@ -230,7 +230,7 @@ export class AppShellComponent {
                         operator: '=',
                         scope: 'resource',
                         tag: 'service.name',
-                        value: 'mirador',
+                        value: 'iris',
                       },
                     ],
                   },
@@ -428,7 +428,7 @@ export class AppShellComponent {
       path: '/pipelines',
       tip: 'Live GitLab CI/CD pipeline monitor — fetched from the local docker-api.mjs proxy so the Spring Boot backend is not involved',
       children: [
-        { label: 'Project switch', tip: 'Toggle between mirador-service and mirador-ui' },
+        { label: 'Project switch', tip: 'Toggle between iris-service and iris-ui' },
         { label: 'Auto-refresh', tip: 'Off / 10 s / 30 s / 60 s polling' },
         {
           label: 'Job drill-down',

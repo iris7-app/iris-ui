@@ -1,12 +1,12 @@
 # Changelog
 
-All notable changes to Mirador UI — Angular 21 frontend.
+All notable changes to Iris UI — Angular 21 frontend.
 
 Format: hand-rolled summary per `stable-vX.Y.Z` tag, maintained by
 `bin/ship/changelog.sh` (Conventional-Commits → emoji sections). Same
-pattern as the [svc repo CHANGELOG.md](https://gitlab.com/mirador1/mirador-service/-/blob/main/CHANGELOG.md).
+pattern as the [svc repo CHANGELOG.md](https://gitlab.com/iris-7/iris-service/-/blob/main/CHANGELOG.md).
 See the shared workflow guide at
-[mirador-service/docs/how-to/changelog-workflow.md](https://gitlab.com/mirador1/mirador-service/-/blob/main/docs/how-to/changelog-workflow.md).
+[iris-service/docs/how-to/changelog-workflow.md](https://gitlab.com/iris-7/iris-service/-/blob/main/docs/how-to/changelog-workflow.md).
 
 ## [stable-v1.0.11] — 2026-04-22
 
@@ -14,7 +14,7 @@ See the shared workflow guide at
 
 ### Changed
 
-- [`efcffb6`](https://gitlab.com/mirador1/mirador-ui/-/commit/efcffb6)
+- [`efcffb6`](https://gitlab.com/iris-7/iris-ui/-/commit/efcffb6)
   — `fix(ci): dedupe path filter + add .prettierrc`. Cleanup of the
   dual-insertion side-effect from `b9734ea` (eslint.config.mjs +
   .gitleaks.toml added twice per rule block). Also extends the
@@ -27,12 +27,12 @@ See the shared workflow guide at
 ### Added
 
 - ESLint size + complexity rules at WARN level
-  ([`b126205`](https://gitlab.com/mirador1/mirador-ui/-/commit/b126205)):
+  ([`b126205`](https://gitlab.com/iris-7/iris-ui/-/commit/b126205)):
   `max-lines` 400, `max-lines-per-function` 80, `complexity` 10,
   `max-params` 5, `max-depth` 4, `max-nested-callbacks` 4. All warnings
   today; Phase C (post-Phase-B refactors) flips to errors.
 - `eslint.config.mjs` + `.gitleaks.toml` added to `.gitlab-ci.yml`
-  workflow path filter ([`b9734ea`](https://gitlab.com/mirador1/mirador-ui/-/commit/b9734ea))
+  workflow path filter ([`b9734ea`](https://gitlab.com/iris-7/iris-ui/-/commit/b9734ea))
   — closes the silent-merge gap that let MR !68 land without lint
   re-validation.
 
@@ -43,52 +43,52 @@ See the shared workflow guide at
 ### Phase 2 (3 UI items)
 
 - **2.3 D1**: OpenAPI → TypeScript types auto-gen
-  ([`2c6179a`](https://gitlab.com/mirador1/mirador-ui/-/commit/2c6179a))
+  ([`2c6179a`](https://gitlab.com/iris-7/iris-ui/-/commit/2c6179a))
   — new `npm run gen:openapi-snapshot` / `gen:api-types` /
   `verify:api-types` scripts + `docs/api/openapi.json` snapshot +
   CI `openapi:types-drift` gate.
 - **2.4 T1**: axe-core Playwright a11y smoke tests
-  ([`5abc0cc`](https://gitlab.com/mirador1/mirador-ui/-/commit/5abc0cc))
+  ([`5abc0cc`](https://gitlab.com/iris-7/iris-ui/-/commit/5abc0cc))
   — login/root/chaos pages, fails on critical+serious WCAG violations.
 - **2.7 DEMO3**: guided onboarding tour with signals overlay
-  ([`cd021b9`](https://gitlab.com/mirador1/mirador-ui/-/commit/cd021b9))
+  ([`cd021b9`](https://gitlab.com/iris-7/iris-ui/-/commit/cd021b9))
   — `TourService` + `TourOverlayComponent`, 6 steps, `🎓` topbar replay
   button, auto-show on first sign-in, localStorage flag, 0 JS library.
 
 ### Phase 3 (2 UI items)
 
 - **3.3 DEMO1**: `/find-the-bug` interactive scenario walkthrough
-  ([`cae69a2`](https://gitlab.com/mirador1/mirador-ui/-/commit/cae69a2))
+  ([`cae69a2`](https://gitlab.com/iris-7/iris-ui/-/commit/cae69a2))
   — 3 puzzles (rate-limit, circuit-break, aggregate-storm), live
   metric sparkline, root-cause reveal after N seconds.
 - **3.4 DEMO2**: `/incident-anatomy` scripted 5-min incident story
-  ([`136f2da`](https://gitlab.com/mirador1/mirador-ui/-/commit/136f2da))
+  ([`136f2da`](https://gitlab.com/iris-7/iris-ui/-/commit/136f2da))
   — 6-step timeline (alert → runbook → trace → fix → verify).
 
 ### Auth0 work
 
 - Auth0-aware interceptor fixes race condition on first dashboard
-  load ([`19f5131`](https://gitlab.com/mirador1/mirador-ui/-/commit/19f5131)).
+  load ([`19f5131`](https://gitlab.com/iris-7/iris-ui/-/commit/19f5131)).
 - Retry errors propagate cleanly without infinite logout loop
-  ([`470c14a`](https://gitlab.com/mirador1/mirador-ui/-/commit/470c14a)).
+  ([`470c14a`](https://gitlab.com/iris-7/iris-ui/-/commit/470c14a)).
 - `AuthService.isAdmin` reads 3 claim shapes (built-in, Keycloak,
-  Auth0 namespaced) ([`5a0d553`](https://gitlab.com/mirador1/mirador-ui/-/commit/5a0d553)).
+  Auth0 namespaced) ([`5a0d553`](https://gitlab.com/iris-7/iris-ui/-/commit/5a0d553)).
 
 ### Chaos feature UI
 
 - Buttons that trigger real Chaos Mesh infrastructure experiments
   (pod-kill / network-delay / cpu-stress) via the backend
-  `/chaos/{experiment}` endpoint ([`a596a90`](https://gitlab.com/mirador1/mirador-ui/-/commit/a596a90)).
+  `/chaos/{experiment}` endpoint ([`a596a90`](https://gitlab.com/iris-7/iris-ui/-/commit/a596a90)).
 
 ### Dev experience
 
 - ESLint 9 + angular-eslint + SARIF → SonarCloud wiring
-  ([`5619800`](https://gitlab.com/mirador1/mirador-ui/-/commit/5619800)).
+  ([`5619800`](https://gitlab.com/iris-7/iris-ui/-/commit/5619800)).
 - Devcontainer for Angular 21 + Node 22 zero-install
-  ([`70eee99`](https://gitlab.com/mirador1/mirador-ui/-/commit/70eee99)).
+  ([`70eee99`](https://gitlab.com/iris-7/iris-ui/-/commit/70eee99)).
 - `@compodoc/compodoc` `@angular-devkit` override → 5 CVEs closed
   without bumping compodoc itself
-  ([`5571f18`](https://gitlab.com/mirador1/mirador-ui/-/commit/5571f18)).
+  ([`5571f18`](https://gitlab.com/iris-7/iris-ui/-/commit/5571f18)).
 
 ## [stable-v1.0.6] — [stable-v1.0.5] — 2026-04-21
 
@@ -112,14 +112,14 @@ For detail: `git log --oneline stable-v1.0.4`.
 
 For pending UI work (Phase B-4 CI modularisation, B-5
 quality.component split, B-6 dashboard.component split), see the
-[svc repo TASKS.md](https://gitlab.com/mirador1/mirador-service/-/blob/main/TASKS.md)
+[svc repo TASKS.md](https://gitlab.com/iris-7/iris-service/-/blob/main/TASKS.md)
 — UI backlog lives there for cross-repo planning.
 
 ---
 
-[stable-v1.0.11]: https://gitlab.com/mirador1/mirador-ui/-/tags/stable-v1.0.11
-[stable-v1.0.10]: https://gitlab.com/mirador1/mirador-ui/-/tags/stable-v1.0.10
-[stable-v1.0.9]: https://gitlab.com/mirador1/mirador-ui/-/tags/stable-v1.0.9
-[stable-v1.0.6]: https://gitlab.com/mirador1/mirador-ui/-/tags/stable-v1.0.6
-[stable-v1.0.5]: https://gitlab.com/mirador1/mirador-ui/-/tags/stable-v1.0.5
-[stable-v1.0.4]: https://gitlab.com/mirador1/mirador-ui/-/tags/stable-v1.0.4
+[stable-v1.0.11]: https://gitlab.com/iris-7/iris-ui/-/tags/stable-v1.0.11
+[stable-v1.0.10]: https://gitlab.com/iris-7/iris-ui/-/tags/stable-v1.0.10
+[stable-v1.0.9]: https://gitlab.com/iris-7/iris-ui/-/tags/stable-v1.0.9
+[stable-v1.0.6]: https://gitlab.com/iris-7/iris-ui/-/tags/stable-v1.0.6
+[stable-v1.0.5]: https://gitlab.com/iris-7/iris-ui/-/tags/stable-v1.0.5
+[stable-v1.0.4]: https://gitlab.com/iris-7/iris-ui/-/tags/stable-v1.0.4

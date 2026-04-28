@@ -1,4 +1,4 @@
-# Setting up a fresh Auth0 tenant for Mirador
+# Setting up a fresh Auth0 tenant for Iris
 
 > **When to follow this** — the existing tenant has an unrecoverable dashboard
 > issue (persistent "Oops! something went wrong"), you're onboarding a new
@@ -22,7 +22,7 @@ constants. The backend reads 3 env vars (`AUTH0_DOMAIN`, `AUTH0_ISSUER_URI`,
 ## 2. Create the Application (Single Page Application)
 
 1. Left nav → **Applications** → **Applications** → **+ Create Application**.
-2. Name: `Mirador UI` (any name).
+2. Name: `Iris UI` (any name).
 3. Type: **Single Page Web Applications** — REQUIRED. The Auth0 Angular SDK
    uses PKCE *(Proof Key for Code Exchange — the auth flow where the browser
    proves it's the same client that started the flow without needing a
@@ -41,7 +41,7 @@ In **Settings** tab, scroll to **Application URIs** section. Add:
 | Allowed Web Origins | `http://localhost:4200` | CORS allowlist for the silent token renewal iframe. |
 
 Multiple entries in the same field use commas (no newlines):
-`http://localhost:4200, https://mirador.example.com` for local + prod.
+`http://localhost:4200, https://iris.example.com` for local + prod.
 
 Scroll to the very bottom → **Save Changes**. The rest of the Settings
 page can stay on defaults.
@@ -53,9 +53,9 @@ userinfo endpoint can decode. We need a **JWT** the backend can validate
 locally. That requires an API registration.
 
 1. Left nav → **Applications** → **APIs** → **+ Create API**.
-2. Name: `Mirador API`.
-3. Identifier: **`https://mirador-api`** — this is the EXACT string the
-   Mirador code expects (`AUTH0_AUDIENCE` constant + backend env var).
+2. Name: `Iris API`.
+3. Identifier: **`https://iris-api`** — this is the EXACT string the
+   Iris code expects (`AUTH0_AUDIENCE` constant + backend env var).
    Don't change it unless you also change both sides.
 4. JSON Web Token (JWT) Profile: **Auth0**.
 5. JWT Signing Algorithm: **RS256** (public-key crypto — the backend
@@ -68,7 +68,7 @@ Without this, even the correct `redirect_uri` + correct API fails with
 `access_denied` after login.
 
 1. Still on the API page → **Machine to Machine Applications** tab.
-2. Find your `Mirador UI` application in the list → toggle it **Authorized**.
+2. Find your `Iris UI` application in the list → toggle it **Authorized**.
 3. No scopes needed (blank is fine — the UI doesn't request extra scopes).
 4. **Update** (blue button bottom-right of the expanded row).
 
@@ -80,7 +80,7 @@ From the **Application Settings** tab (section "Basic Information"):
   `https://`, no trailing slash).
 - **Client ID** → copy the 32-char string.
 
-The API identifier you already know: `https://mirador-api`.
+The API identifier you already know: `https://iris-api`.
 
 ## 7. Wire the UI
 
@@ -90,29 +90,29 @@ constants at the top of the file:
 ```typescript
 const AUTH0_DOMAIN = 'dev-abc123xyz.us.auth0.com';     // ← your new domain
 const AUTH0_CLIENT_ID = 'NEW_32_CHAR_CLIENT_ID_HERE';   // ← your new clientId
-const AUTH0_AUDIENCE = 'https://mirador-api';           // stays unchanged
+const AUTH0_AUDIENCE = 'https://iris-api';           // stays unchanged
 ```
 
 Rebuild: `npm start` (dev) or `npm run build -- --configuration production`
 (prod). Reload the browser.
 
-## 8. Wire the backend (mirador-service)
+## 8. Wire the backend (iris-service)
 
-[`docker-compose.yml`](https://gitlab.com/mirador1/mirador-service/-/blob/main/docker-compose.yml)
-— set three environment variables on the `mirador` service:
+[`docker-compose.yml`](https://gitlab.com/iris-7/iris-service/-/blob/main/docker-compose.yml)
+— set three environment variables on the `iris` service:
 
 ```yaml
 environment:
   AUTH0_DOMAIN: dev-abc123xyz.us.auth0.com
   AUTH0_ISSUER_URI: https://dev-abc123xyz.us.auth0.com/   # TRAILING SLASH required
-  AUTH0_AUDIENCE: https://mirador-api
+  AUTH0_AUDIENCE: https://iris-api
 ```
 
 The trailing slash on the issuer URI is mandatory — Auth0 puts that slash
 in the JWT `iss` claim, and Spring Security does a string-compare. One-off
 typo = every token rejected.
 
-Restart the backend (`docker compose up -d mirador` or `mvn spring-boot:run`
+Restart the backend (`docker compose up -d iris` or `mvn spring-boot:run`
 with the vars exported).
 
 ## 9. Test the round-trip
@@ -153,17 +153,17 @@ with the vars exported).
 Auth0 sign-in**
 
 - The token is valid but has no role claim. By default the Auth0 SDK
-  only requests `openid profile email` — which Mirador's
+  only requests `openid profile email` — which Iris's
   `JwtAuthenticationFilter` treats as ROLE_USER. If you need ROLE_ADMIN
   (for chaos endpoints, etc.), add a **Rules** or **Actions** step in
-  Auth0 that injects the `https://mirador/roles` claim. Example script
-  is in <https://gitlab.com/mirador1/mirador-service/-/blob/main/docs/api/auth0-action-roles.js>.
+  Auth0 that injects the `https://iris/roles` claim. Example script
+  is in <https://gitlab.com/iris-7/iris-service/-/blob/main/docs/api/auth0-action-roles.js>.
 
 ## Related
 
 - [`src/app/app.config.ts`](../../src/app/app.config.ts) — UI Auth0 setup.
 - [`src/app/core/auth/auth0-bridge.service.ts`](../../src/app/core/auth/auth0-bridge.service.ts)
   — bridges Auth0 tokens into AuthService.
-- mirador-service [`src/main/java/com/mirador/auth/KeycloakConfig.java`](https://gitlab.com/mirador1/mirador-service/-/blob/main/src/main/java/com/mirador/auth/KeycloakConfig.java)
+- iris-service [`src/main/java/com/iris/auth/KeycloakConfig.java`](https://gitlab.com/iris-7/iris-service/-/blob/main/src/main/java/com/iris/auth/KeycloakConfig.java)
   — backend JWT validator.
-- mirador-service [ADR-0018 — JWT strategy](https://gitlab.com/mirador1/mirador-service/-/blob/main/docs/adr/0018-jwt-strategy-hmac-refresh-rotation.md).
+- iris-service [ADR-0018 — JWT strategy](https://gitlab.com/iris-7/iris-service/-/blob/main/docs/adr/0018-jwt-strategy-hmac-refresh-rotation.md).

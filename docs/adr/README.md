@@ -1,4 +1,4 @@
-# Architecture Decision Records (ADRs) — `mirador-ui`
+# Architecture Decision Records (ADRs) — `iris-ui`
 
 Lightweight (Michael Nygard format) record of architectural decisions.
 
@@ -14,9 +14,9 @@ for the meta-ADR explaining the format and criteria.
 ## Cross-cutting ADRs
 
 UI-local ADRs live below. **Cross-repo ADRs** (decisions that bind ALL
-4 mirador1 repos including UI : submodule pattern, polyrepo vs monorepo,
+4 iris-7 repos including UI : submodule pattern, polyrepo vs monorepo,
 release engineering, Renovate base, tag namespace) live in
-[`mirador-common/docs/adr/`](https://gitlab.com/mirador1/mirador-common/-/tree/main/docs/adr).
+[`iris-common/docs/adr/`](https://gitlab.com/iris-7/iris-common/-/tree/main/docs/adr).
 
 ## Index
 

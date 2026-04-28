@@ -19,7 +19,7 @@ within the published latency budget.
 
 ```bash
 # brew install k6   (if not yet installed)
-K8S_HOST=mirador1.duckdns.org k6 run scripts/load-test/smoke.js
+K8S_HOST=iris7.duckdns.org k6 run scripts/load-test/smoke.js
 ```
 
 ## Run in CI

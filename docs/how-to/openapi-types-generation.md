@@ -1,6 +1,6 @@
 # Auto-generate TypeScript types from the backend OpenAPI spec
 
-**Why**: the backend (mirador-service) publishes its API shape at
+**Why**: the backend (iris-service) publishes its API shape at
 `/v3/api-docs` (via springdoc). Keeping hand-written TypeScript types in the
 UI next to the server's authoritative contract means every server-side DTO
 change becomes a UI review task. This guide automates the diff.
@@ -24,14 +24,14 @@ fails the pipeline if either side drifts without the other being regenerated.
 
 ### The backend API changed (new field, new endpoint)
 
-You're working on mirador-ui and the backend just shipped a new field on
+You're working on iris-ui and the backend just shipped a new field on
 `CustomerDto`. To mirror it:
 
 ```bash
-# 1. Start the backend locally (from ../workspace-modern/mirador-service).
+# 1. Start the backend locally (from ../workspace-modern/iris-service).
 ./run.sh    # or ./mvnw spring-boot:run
 
-# 2. In mirador-ui:
+# 2. In iris-ui:
 npm run gen:api    # fetches snapshot AND regenerates types in one shot
 
 # 3. Review the diffs — both should change together.
@@ -102,7 +102,7 @@ only pay for the types contract, keep everything else.
 
 - **`Could not reach .../v3/api-docs`** — the backend isn't running, or
   springdoc is disabled in the active Spring profile. Start it with
-  `./run.sh` in `../workspace-modern/mirador-service` and retry.
+  `./run.sh` in `../workspace-modern/iris-service` and retry.
 - **`verify:api-types` fails on CI but passes locally** — you regenerated
   the types but forgot to commit `docs/api/openapi.json`. Commit both.
 - **`openapi-typescript` complains about an unsupported schema** — likely

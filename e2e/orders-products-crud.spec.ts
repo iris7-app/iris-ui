@@ -27,7 +27,7 @@ test.describe('Orders + Products CRUD @golden', () => {
     // for the exhaustive rationale (Kafka rebootstrap, Tour seed, …).
     await waitForBackendReady(page);
     await page.addInitScript(() => {
-      window.localStorage.setItem('mirador:tour:seen', 'true');
+      window.localStorage.setItem('iris:tour:seen', 'true');
     });
   });
 

@@ -17,8 +17,8 @@
 #      resolves on GitHub + GitLab renders.
 #
 # Usage:
-#   cd mirador-ui
-#   ../mirador-service/run.sh app &          # backend in another shell
+#   cd iris-ui
+#   ../iris-service/run.sh app &          # backend in another shell
 #   npm start &                               # UI dev server
 #   bin/record-demo.sh                        # produces docs/media/demo.gif
 #
@@ -72,7 +72,7 @@ curl -sSf "$BACKEND_URL/actuator/health" >/dev/null 2>&1 \
 # bin/healthcheck-all.sh — this avoids the v3-iteration pattern of
 # launching record-demo only to discover mid-run that LGTM crashed
 # or Kafka stopped (cost: 10 wasted recordings this session).
-SVC_HEALTHCHECK="../../workspace-modern/mirador-service/bin/dev/healthcheck-all.sh"
+SVC_HEALTHCHECK="../../workspace-modern/iris-service/bin/dev/healthcheck-all.sh"
 if [[ -x "$SVC_HEALTHCHECK" ]]; then
   info "Running full-stack healthcheck…"
   if ! "$SVC_HEALTHCHECK" >/tmp/record-demo-healthcheck.log 2>&1; then

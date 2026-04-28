@@ -57,7 +57,7 @@ describe('FeatureFlagService', () => {
       // Pinned: "new feature hidden by default" contract — when the
       // proxy is unreachable the UI should NOT show flag-gated features
       // (otherwise a network outage would silently expose work-in-progress).
-      expect(service.isOn('mirador.bio.enabled')).toBe(false);
+      expect(service.isOn('iris.bio.enabled')).toBe(false);
     });
 
     it('returns false for any unknown flag name', () => {

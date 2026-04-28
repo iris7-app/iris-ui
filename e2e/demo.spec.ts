@@ -18,7 +18,7 @@
  *   - Customers create: proves the full UI→JWT→CORS→POST chain.
  *   - Chaos traffic:    gives the observability stack real data to show.
  *   - Grafana dashboard: "the request passes through" metric moment.
- *   - Trace → span → logs: the full drill-down narrative Mirador is about.
+ *   - Trace → span → logs: the full drill-down narrative Iris is about.
  *   - Kafka UI:         shows the messaging side (not just HTTP).
  *   - Swagger UI:       the API contract served by springdoc (ADR-0020
  *                       X-API-Version header visible on operations).
@@ -59,12 +59,12 @@ const ACTUATOR = 'http://localhost:8080/actuator';
 // Format matches Grafana Scenes' URL sync.
 const METRICS_DRILLDOWN =
   'http://localhost:3000/a/grafana-metricsdrilldown-app/trail?var-ds=prometheus' +
-  '&var-filters=service_name%7C%3D%7Cmirador';
+  '&var-filters=service_name%7C%3D%7Ciris';
 const TRACES_DRILLDOWN =
   'http://localhost:3000/a/grafana-exploretraces-app/explore?var-ds=tempo' +
-  '&var-filters=resource.service.name%7C%3D%7Cmirador';
+  '&var-filters=resource.service.name%7C%3D%7Ciris';
 const LOGS_DRILLDOWN =
-  'http://localhost:3000/a/grafana-lokiexplore-app/explore/service/mirador/logs';
+  'http://localhost:3000/a/grafana-lokiexplore-app/explore/service/iris/logs';
 const PYROSCOPE_EXPLORE = 'http://localhost:3000/a/grafana-pyroscope-app/explore';
 const REDIS_COMMANDER = 'http://localhost:8082';
 
@@ -74,7 +74,7 @@ test.describe('Demo recording for README @demo', () => {
     // 0. PRE-FLIGHT — dismiss the first-visitor tour overlay
     // ═══════════════════════════════════════════════════════════════
     // TourService.maybeAutoStart() fires the welcome tour on first
-    // visit (localStorage 'mirador:tour:seen' missing). The tour's
+    // visit (localStorage 'iris:tour:seen' missing). The tour's
     // backdrop intercepts pointer events on every link in the layout
     // — including the `Customers` nav link the demo clicks at step 3.
     // Use addInitScript (NOT page.evaluate after goto) so the flag is
@@ -87,7 +87,7 @@ test.describe('Demo recording for README @demo', () => {
     // recording happened to dismiss it via the Escape fallback below).
     // Fixed 2026-04-25 alongside the customer-crud spec same-day fix.
     await page.addInitScript(() => {
-      window.localStorage.setItem('mirador:tour:seen', 'true');
+      window.localStorage.setItem('iris:tour:seen', 'true');
     });
 
     // ═══════════════════════════════════════════════════════════════

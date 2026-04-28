@@ -15,7 +15,7 @@
  * Why this file is small:
  *   This is a SMOKE check. A full a11y audit with axe-core would scan
  *   every route, every component state (menu open, modal shown, etc.).
- *   Mirador already tracks the long tail of a11y warnings via ESLint
+ *   Iris already tracks the long tail of a11y warnings via ESLint
  *   (angular-eslint a11y rules). This spec catches regressions on the
  *   MINIMUM that has to work — if a color contrast fix in the topbar
  *   breaks a screen-reader landmark, we notice at the next CI run, not
@@ -68,7 +68,7 @@ for (const pageSpec of PAGES_TO_AUDIT) {
       });
     }
 
-    // Critical / serious = actual blockers. Mirador's dashboard is a
+    // Critical / serious = actual blockers. Iris's dashboard is a
     // developer / recruiter target, not consumer-grade, but screen-reader
     // landmarks and keyboard nav need to work for the demo to render at
     // all in accessibility-eval contexts.

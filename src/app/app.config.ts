@@ -41,7 +41,7 @@ import { AppErrorHandler } from './core/telemetry/app-error-handler';
  */
 const AUTH0_DOMAIN = 'dev-ksxj46zlkhk2gcvo.us.auth0.com';
 const AUTH0_CLIENT_ID = 'DZKCwZ9dqAk3dOtVdDfc2rLJOenxidX6';
-const AUTH0_AUDIENCE = 'https://mirador-api';
+const AUTH0_AUDIENCE = 'https://iris-api';
 
 /**
  * Root `ApplicationConfig` passed to `bootstrapApplication()` in `main.ts`.
