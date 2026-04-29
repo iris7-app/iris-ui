@@ -17,7 +17,6 @@
  */
 import { routes } from './app.routes';
 
-// eslint-disable-next-line max-lines-per-function
 describe('app.routes', () => {
   describe('feature routes — every visible page is registered', () => {
     /**

@@ -11,7 +11,6 @@
 import { TestBed } from '@angular/core/testing';
 import { DashboardHealthProbesComponent } from './dashboard-health-probes.component';
 
-// eslint-disable-next-line max-lines-per-function
 describe('DashboardHealthProbesComponent', () => {
   let component: DashboardHealthProbesComponent;
 

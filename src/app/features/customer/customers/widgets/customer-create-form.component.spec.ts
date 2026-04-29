@@ -10,7 +10,6 @@
 import { TestBed } from '@angular/core/testing';
 import { CustomerCreateFormComponent } from './customer-create-form.component';
 
-// eslint-disable-next-line max-lines-per-function
 describe('CustomerCreateFormComponent', () => {
   let component: CustomerCreateFormComponent;
 

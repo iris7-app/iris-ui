@@ -18,7 +18,6 @@ import { provideRouter } from '@angular/router';
 import { EnvironmentInjector, runInInjectionContext } from '@angular/core';
 import { IncidentAnatomyComponent } from './incident-anatomy.component';
 
-// eslint-disable-next-line max-lines-per-function
 describe('IncidentAnatomyComponent', () => {
   let component: IncidentAnatomyComponent;
 

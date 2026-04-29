@@ -17,7 +17,6 @@ import { provideHttpClientTesting } from '@angular/common/http/testing';
 import { FeatureFlagService } from './feature-flag.service';
 import { EnvService } from '../env/env.service';
 
-// eslint-disable-next-line max-lines-per-function
 describe('FeatureFlagService', () => {
   let service: FeatureFlagService;
   let envService: EnvService;

@@ -10,7 +10,6 @@
  */
 import { ActivityService } from './activity.service';
 
-// eslint-disable-next-line max-lines-per-function
 describe('ActivityService', () => {
   let service: ActivityService;
 
