@@ -157,6 +157,15 @@ include:
   - local: .gitlab-ci/security.yml  # audit, trivy, sbom, grype, dockle, cosign, gitleaks
   - local: .gitlab-ci/quality.yml   # sonarcloud, typedoc
   - local: .gitlab-ci/deploy.yml    # .kubectl-apply-ui + 5 deploy targets
+  # Universal CI templates from iris-common (cross-project includes).
+  # Pinned to main — bumping = updating the submodule pin AND letting CI
+  # pick up the new templates next pipeline. See ADR-0060 flat α pattern.
+  - project: 'iris-7/iris-common'
+    ref: main
+    file: 'ci-templates/shellcheck.yml'   # bash linting on bin/**/*.sh
+  - project: 'iris-7/iris-common'
+    ref: main
+    file: 'ci-templates/adr-drift.yml'    # docs/adr/ index regen check
 # Release automation — 2026-04-23 : release-please removed (GitHub-API-only,
 # 401 Bad Credentials on GitLab PAT). Replaced by bin/ship/changelog.sh +
 # bin/ship/gitlab-release.sh invoked manually after a stable-v* tag push.
