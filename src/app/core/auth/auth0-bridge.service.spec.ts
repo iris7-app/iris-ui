@@ -15,7 +15,6 @@ import { BehaviorSubject, of, throwError } from 'rxjs';
 import { Auth0BridgeService } from './auth0-bridge.service';
 import { AuthService } from './auth.service';
 
-// eslint-disable-next-line max-lines-per-function
 describe('Auth0BridgeService', () => {
   let isAuthenticated$: BehaviorSubject<boolean>;
   let auth0Mock: Partial<Auth0Service>;

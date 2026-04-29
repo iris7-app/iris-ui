@@ -5,7 +5,6 @@
  */
 import { DeepLinkService } from './deep-link.service';
 
-// eslint-disable-next-line max-lines-per-function
 describe('DeepLinkService', () => {
   let service: DeepLinkService;
 

@@ -10,7 +10,6 @@ import { TestBed } from '@angular/core/testing';
 import { TelemetryService } from './telemetry.service';
 import { ActivityService } from '../activity/activity.service';
 
-// eslint-disable-next-line max-lines-per-function
 describe('TelemetryService', () => {
   let service: TelemetryService;
   let activity: ActivityService;

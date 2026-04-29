@@ -8,7 +8,6 @@ import { provideHttpClient } from '@angular/common/http';
 import { HttpTestingController, provideHttpClientTesting } from '@angular/common/http/testing';
 import { PipelinesService, PROJECTS } from './pipelines.service';
 
-// eslint-disable-next-line max-lines-per-function
 describe('PipelinesService', () => {
   let service: PipelinesService;
   let httpMock: HttpTestingController;

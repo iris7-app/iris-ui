@@ -18,7 +18,6 @@ const deepLinkStub: Partial<DeepLinkService> = {
   dockerContainer: (name: string) => `docker-desktop://containers/${name}`,
 };
 
-// eslint-disable-next-line max-lines-per-function
 describe('DashboardArchitectureMapComponent', () => {
   let component: DashboardArchitectureMapComponent;
 

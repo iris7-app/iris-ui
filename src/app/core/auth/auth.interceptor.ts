@@ -174,7 +174,6 @@ function handleRefresh(
         // eventual retry request propagate up unchanged (see below).
         return auth0.getAccessTokenSilently().pipe(
           catchError((err) => {
-            // eslint-disable-next-line no-console
             console.warn(
               '[authInterceptor] Auth0 silent-refresh failed — falling back to built-in',
               err?.error || err?.message || err,
