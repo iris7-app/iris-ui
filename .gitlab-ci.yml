@@ -39,6 +39,11 @@ workflow:
         - "config/eslint.config.mjs"          # gates lint:eslint
         - ".gitleaks.toml"             # gates secret-scan
         - ".prettierrc"                # gates lint:format
+        # Universal CI gates from iris-common (shellcheck + adr-drift)
+        # — without these path entries, a shell-only or ADR-only MR
+        # would skip the pipeline entirely and bypass the new gates.
+        - "bin/**/*.sh"
+        - "docs/adr/**/*"
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
       changes:
         - "src/**/*"
@@ -75,6 +80,11 @@ workflow:
         - "config/eslint.config.mjs"          # gates lint:eslint
         - ".gitleaks.toml"             # gates secret-scan
         - ".prettierrc"                # gates lint:format
+        # Universal CI gates from iris-common (shellcheck + adr-drift)
+        # — without these path entries, a shell-only or ADR-only MR
+        # would skip the pipeline entirely and bypass the new gates.
+        - "bin/**/*.sh"
+        - "docs/adr/**/*"
     - if: $CI_PIPELINE_SOURCE == "schedule"
     - when: never
 
