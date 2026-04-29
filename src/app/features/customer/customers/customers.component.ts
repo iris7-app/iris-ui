@@ -21,7 +21,6 @@ import {
   OnInit,
   OnDestroy,
   viewChild,
-  ElementRef,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormsModule } from '@angular/forms';
@@ -30,10 +29,8 @@ import { RouterLink } from '@angular/router';
 import {
   ApiService,
   Customer,
-  CustomerSummary,
   EnrichedCustomer,
   TodoItem,
-  Page,
   AggregatedResponse,
 } from '../../../core/api/api.service';
 import { EnvService } from '../../../core/env/env.service';
@@ -42,8 +39,8 @@ import { ToastService } from '../../../core/toast/toast.service';
 import { ActivityService } from '../../../core/activity/activity.service';
 import { FeatureFlagService } from '../../../core/feature-flags/feature-flag.service';
 import { InfoTipComponent } from '../../../shared/info-tip/info-tip.component';
-import { uuid, httpError } from './customers-helpers';
-import type { DetailTab, SortField, SortDir } from './customers-types';
+import { httpError } from './customers-helpers';
+import type { DetailTab, SortField } from './customers-types';
 import { CustomerDetailPanelComponent } from './widgets/customer-detail-panel.component';
 import { CustomerCreateFormComponent } from './widgets/customer-create-form.component';
 import { ConfirmModalComponent } from '../../../shared/confirm-modal/confirm-modal.component';
