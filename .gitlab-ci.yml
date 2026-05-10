@@ -96,6 +96,7 @@ stages:
   - quality
   - test-image    # Build + push Docker image (validation artefact — UI is not deployed to K8s per ADR-0025)
   - deploy    # Legacy PaaS deploy targets — kept manual; UI runs only on the developer laptop
+  - promote   # Auto-merge dev → main when dev pipeline succeeds (iris-common template)
 
 variables:
   NODE_VERSION: "22"
@@ -176,6 +177,9 @@ include:
   - project: 'iris-7/iris-common'
     ref: main
     file: 'ci-templates/adr-drift.yml'    # docs/adr/ index regen check
+  - project: 'iris-7/iris-common'
+    ref: main
+    file: 'ci-templates/auto-merge-dev-to-main.yml'    # auto-promote dev → main on green
 # Release automation — 2026-04-23 : release-please removed (GitHub-API-only,
 # 401 Bad Credentials on GitLab PAT). Replaced by bin/ship/changelog.sh +
 # bin/ship/gitlab-release.sh invoked manually after a stable-v* tag push.
