@@ -44,7 +44,7 @@ workflow:
         # would skip the pipeline entirely and bypass the new gates.
         - "bin/**/*.sh"
         - "docs/adr/**/*"
-    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_COMMIT_BRANCH == "dev"
       changes:
         - "src/**/*"
         - "package.json"
