@@ -44,6 +44,9 @@ workflow:
         # would skip the pipeline entirely and bypass the new gates.
         - "bin/**/*.sh"
         - "docs/adr/**/*"
+        # GitHub Actions mirror workflow (added 2026-05-12 per ADR-0069
+        # double-CI). Without this, .github changes silently skip CI.
+        - ".github/**/*"
     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH || $CI_COMMIT_BRANCH == "dev"
       changes:
         - "src/**/*"
@@ -85,6 +88,9 @@ workflow:
         # would skip the pipeline entirely and bypass the new gates.
         - "bin/**/*.sh"
         - "docs/adr/**/*"
+        # GitHub Actions mirror workflow (added 2026-05-12 per ADR-0069
+        # double-CI). Without this, .github changes silently skip CI.
+        - ".github/**/*"
         # Submodule SHA bumps — added 2026-05-11 so dev-pushes from `chore(submodule): bump iris-common SHA -> X` trigger pipeline (otherwise promote-dev-to-main never fires for bump merges).
         - ".gitmodules"
         - "infra/common"
