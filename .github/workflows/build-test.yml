@@ -1,0 +1,54 @@
+name: build-test
+
+# Backup CI gate (per ADR-0069 double-CI). Runs lint + unit tests +
+# production build on Linux amd64 native. The full GitLab CI is the
+# reference — this workflow is the safety net.
+
+on:
+  push:
+    branches: [main, dev]
+    paths:
+      - "src/**"
+      - "package.json"
+      - "package-lock.json"
+      - "angular.json"
+      - "tsconfig*.json"
+      - "config/**"
+      - ".github/workflows/build-test.yml"
+  pull_request:
+    paths:
+      - "src/**"
+      - "package.json"
+      - "package-lock.json"
+      - "angular.json"
+      - "tsconfig*.json"
+      - "config/**"
+      - ".github/workflows/build-test.yml"
+
+concurrency:
+  group: build-test-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: setup-node-22
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci --prefer-offline --no-audit --no-fund
+      - name: lint
+        run: npm run lint
+      - name: unit-tests
+        run: npm test -- --watch=false
+      - name: production-build
+        run: npm run build -- --configuration production
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: dist
+          path: dist/
+          retention-days: 7
