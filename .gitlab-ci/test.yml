@@ -128,8 +128,12 @@ e2e:kind:
   variables:
     # Backend service repo — cloned next to the UI checkout so we can
     # run `./run.sh app` against postgres/kafka/redis in compose. Token
-    # is read-only, scoped to the `iris-service` project.
-    SERVICE_REPO: "https://gitlab.com/iris-7/iris-service.git"
+    # is read-only, scoped to the `iris-service-java` project.
+    # Renamed to iris-service-java during the 2026-04-28 Iris rebrand
+    # (Mirador → Iris). The old `iris-service` slug 404s — symptom is
+    # the clone step silently producing /tmp/svc empty, then the
+    # `cd /tmp/svc` in after_script fails. Fixed 2026-05-14.
+    SERVICE_REPO: "https://gitlab.com/iris-7/iris-service-java.git"
     E2E_BASE_URL: "http://localhost:4200"
   before_script:
     # Install Java 25 + Maven (Playwright image is Debian jammy-based).
