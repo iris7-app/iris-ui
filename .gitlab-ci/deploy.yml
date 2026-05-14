@@ -2,6 +2,18 @@
 # Phase B-4 CI modularisation (ADR-0050). Contains: .kubectl-apply-ui, deploy, deploy, deploy, deploy, deploy.
 # The parent `.gitlab-ci.yml` keeps workflow/stages/variables/default
 # + the `.install:` hidden job used via `extends:` across files.
+#
+# ── allow_failure: true on deploy:* jobs — pattern documented here once ─────
+# Every deploy:* target (EKS, AKS, Cloud Run, Fly, K3s) carries
+# `when: manual + allow_failure: true`. Rationale per ADR-0049 :
+#   - OPT-IN multi-cloud deploys (mirror of iris-service-java deploy
+#     fan-out — same logic, same exit ticket).
+#   - Cloud provider errors (quota, auth, transient infra) shouldn't fail
+#     the entire main pipeline — they signal that specific target only.
+#   - Failure remains visible : ⚠️ in the pipeline view + MR widget + email.
+# Exit ticket : remove `allow_failure: true` per target if that target
+# becomes the primary production deploy. Today these are showcase only —
+# the UI runs on the developer laptop per ADR-0025.
 
 .kubectl-apply-ui:
   script:
